@@ -2,8 +2,6 @@ import { useSelector } from "react-redux";
 import { Recipe } from "./Recipe";
 import { RecipeState } from "../../redux/reducer";
 
-
-
 const RecipeList: React.FunctionComponent = () => {
 
     const currentRecipes: any = useSelector<RecipeState>((state) => state.recipes[0])
@@ -17,6 +15,11 @@ const RecipeList: React.FunctionComponent = () => {
                             <Recipe
                                 label={recipe.recipe.label}
                                 url={recipe.recipe.url}
+                                img={recipe.recipe.image}
+                                calories={recipe.recipe.calories}
+                                source={recipe.recipe.source}
+                                ingredients={recipe.recipe.ingredientLines}
+                                servings={recipe.recipe.yield}
                             />
                         </li>
                     )

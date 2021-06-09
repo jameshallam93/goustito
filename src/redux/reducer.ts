@@ -1,5 +1,5 @@
-import { Recipe, Actions } from "./actions";
-import { RootState } from "./store"
+import { Actions } from "./actions";
+
 
 export interface RecipeState {
     recipes: string[]

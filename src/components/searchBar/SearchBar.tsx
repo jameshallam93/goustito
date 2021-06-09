@@ -25,7 +25,7 @@ const SearchBar: React.FunctionComponent = () => {
             <input
                 type="text"
                 value={searchTerm}
-                onChange={(event) => handleChange(event)}
+                onChange={handleChange}
             />
             <input
                 type="submit"
