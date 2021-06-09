@@ -11,14 +11,14 @@ interface RecipeProps {
 }
 
 const Recipe: React.FunctionComponent<RecipeProps> = ({ label, url, img, calories, source, ingredients, servings }) => {
-    const [isHidden, setIsHidden] = useState<Boolean>(true)
+    const [isHidden, setIsHidden] = useState<Boolean>(true);
 
     const handleExpand = () => {
         setIsHidden(!isHidden);
-    }
+    };
 
     //todo - move this logic to scss file - change handleExpand to alter className of hidden div
-    const hiddenStyle = { display: isHidden ? "none" : "" }
+    const hiddenStyle = { display: isHidden ? "none" : "" };
 
     return (
         <section className="recipe">
@@ -41,7 +41,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ label, url, img, calorie
 
 
         </section>
-    )
-}
+    );
+};
 
-export { Recipe }
+export { Recipe };

@@ -2,12 +2,12 @@ import { Actions } from "./actions";
 
 
 export interface RecipeState {
-    recipes: string[]
-}
+    recipes: string[];
+};
 
 const initialState = {
     recipes: []
-}
+};
 
 
 const recipeReducer: any = (state: RecipeState = initialState, action: Actions) => {
@@ -16,10 +16,10 @@ const recipeReducer: any = (state: RecipeState = initialState, action: Actions) 
             return {
                 ...state,
                 recipes: [action.payload.recipes]
-            }
+            };
         default:
             return state;
-    }
-}
+    };
+};
 
-export { recipeReducer }
+export { recipeReducer };
