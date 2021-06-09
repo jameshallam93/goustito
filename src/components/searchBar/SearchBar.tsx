@@ -29,7 +29,8 @@ const SearchBar: React.FunctionComponent = () => {
     const handleCheckboxChange = (label: string) => {
         if (checkedMealTypes.includes(label)) {
             const newCheckedMealTypes = checkedMealTypes.filter(type =>
-                type !== label);
+                type !== label
+            );
             setCheckedMealTypes(newCheckedMealTypes);
             return;
         }

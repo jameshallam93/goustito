@@ -23,9 +23,9 @@ const RecipeList: React.FunctionComponent = () => {
                                     servings={recipe.recipe.yield}
                                 />
                             </li>
-                        )
+                        );
                     })
-                }
+                };
             </ul>
         </section>
     );

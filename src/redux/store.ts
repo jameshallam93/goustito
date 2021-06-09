@@ -9,4 +9,4 @@ const store = createStore(recipeReducer, composeWithDevTools(
 
 export type RootState = ReturnType<typeof store.getState>;
 
-export { store }
+export { store };
