@@ -13,6 +13,7 @@ const SearchBar: React.FunctionComponent = () => {
     const [searchTerms, setSearchTerms] = useState<string>("");
     const [checkedMealTypes, setCheckedMealTypes] = useState<Array<string>>([]);
 
+
     const handleSearch = async (event: React.FormEvent) => {
         event.preventDefault();
         const results = await recipeRequests.searchByName(searchTerms, checkedMealTypes);
@@ -55,7 +56,6 @@ const SearchBar: React.FunctionComponent = () => {
                     )
                 })
             }
-
             <input
                 type="submit"
             />
