@@ -40,7 +40,7 @@ const RecipeList: React.FunctionComponent = () => {
                             </li>
                         );
                     })
-                };
+                }
             </ul>
         </section>
     );

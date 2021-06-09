@@ -18,6 +18,11 @@ export const SHOW_NEXT_PAGE = () => {
         type: "SHOW_NEXT_PAGE"
     }
 }
+export const SHOW_PREVIOUS_PAGE = () => {
+    return {
+        type: "SHOW_PREVIOUS_PAGE"
+    }
+}
 
 export type Actions = ReturnType<typeof SET_RECIPES>
 

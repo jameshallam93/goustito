@@ -36,7 +36,7 @@ const recipeReducer: any = (state: RecipeState = initialState, action: Actions) 
                     to: state.resultsShown.to + 10
                 }
             }
-        case "DECREASE_FROM_TO":
+        case "SHOW_PREVIOUS_PAGE":
             return {
                 ...state,
                 resultsShown: {
