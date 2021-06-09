@@ -1,15 +1,18 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { recipeRequests } from "../../axios/recipes";
+import { SET_RECIPES } from "../../redux/actions";
 
 const SearchBar: React.FunctionComponent = () => {
 
+    const dispatch = useDispatch()
     const [searchTerm, setSearchTerm] = useState("")
 
-    const handleSearch = (event: React.FormEvent) => {
+    const handleSearch = async (event: React.FormEvent) => {
         event.preventDefault();
-        const results = recipeRequests.searchByName(searchTerm)
-        console.log(results)
+        const results = await recipeRequests.searchByName(searchTerm)
 
+        dispatch(SET_RECIPES(results.hits))
         return;
     };
 
