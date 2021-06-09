@@ -7,7 +7,9 @@ const PageNavigation: React.FunctionComponent = () => {
 
     const dispatch = useDispatch();
     const startOfList = useSelector<RecipeState, boolean>((state) => state.resultsShown.from === 0)
-
+    const endOfList = useSelector<RecipeState, boolean>((state) =>
+        (state.resultsShown.to % 100 === 99)
+    )
     const changePage = (direction: string): void => {
         if (direction === "next") {
             dispatch(SHOW_NEXT_PAGE());
@@ -22,11 +24,12 @@ const PageNavigation: React.FunctionComponent = () => {
     };
     //todo - move this logic to scss
     const showPrevious = { display: startOfList ? "none" : "" }
+    const showNext = { display: endOfList ? "none" : "" }
 
     return (
         <div className="page-navigation">
             <button style={showPrevious} onClick={() => changePage("previous")}>Previous</button>
-            <button onClick={() => changePage("next")}>Next</button>
+            <button style={showNext} onClick={() => changePage("next")}>Next</button>
         </div>
     )
 }

@@ -13,7 +13,7 @@ const initialState = {
     recipes: [],
     resultsShown: {
         from: 0,
-        to: 10
+        to: 9
     }
 };
 
@@ -25,9 +25,17 @@ const recipeReducer: any = (state: RecipeState = initialState, action: Actions) 
                 recipes: [action.payload.recipes],
                 resultsShown: {
                     from: 0,
-                    to: 10
+                    to: 9
                 }
             };
+        case "ADD_RECIPES":
+            return {
+                ...state,
+                recipes: [
+                    ...state.recipes,
+                    action.payload.recipes
+                ]
+            }
         case "SHOW_NEXT_PAGE":
             return {
                 ...state,
