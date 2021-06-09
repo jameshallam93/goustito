@@ -1,14 +1,5 @@
 import axios from "axios";
-
-const baseUrl = "https://api.edamam.com/search";
-
-const generateRequest = (searchTerms: string, mealTypes: string[]): string => {
-    let mealTypeString = ``;
-    mealTypes.forEach(type => {
-        mealTypeString = mealTypeString.concat(`${type}+`);
-    });
-    return `${baseUrl}?q=${searchTerms}&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_EDAMAM_API_KEY}${mealTypes && `&mealType=`}${mealTypeString}`;
-};
+import { generateRequest } from "./generateRequest"
 
 const recipeRequests = {
 
