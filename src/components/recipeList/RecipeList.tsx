@@ -1,11 +1,26 @@
 import { useSelector } from "react-redux";
 import { Recipe } from "./Recipe";
 import { RecipeState } from "../../redux/reducer";
+import { useEffect, useState } from "react";
+
+interface ResultsShown {
+    from: number,
+    to: number
+}
 
 const RecipeList: React.FunctionComponent = () => {
 
-    const currentRecipes: any = useSelector<RecipeState>((state) => state.recipes[0]);
+    const [currentRecipes, setCurrentRecipes] = useState([])
 
+    const allRecipes: any = useSelector<RecipeState>((state) => state.recipes[0]);
+    const resultsToShow = useSelector<RecipeState, ResultsShown>((state) => state.resultsShown)
+
+    useEffect(() => {
+        const recipesToShow = allRecipes?.slice(resultsToShow.from, resultsToShow.to)
+        setCurrentRecipes(recipesToShow)
+    },
+        [resultsToShow, allRecipes]
+    )
     return (
         <section className="recipe-list">
             <ul>
