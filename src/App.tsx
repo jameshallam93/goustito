@@ -8,8 +8,13 @@ const App: React.FunctionComponent = () => {
 
   const dispatch = useDispatch();
 
+
   const nextPage = () => {
     dispatch(SHOW_NEXT_PAGE());
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
 
   };
   return (
