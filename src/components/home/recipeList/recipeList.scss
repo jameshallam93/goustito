@@ -6,7 +6,7 @@
     .info {
         margin-top: 1em;
         display: block;
-        max-width: 40%;
+        width: 20%;
         height: inherit;
         background-color: black;
         color: #ff3c04;
@@ -22,6 +22,12 @@
             width: 80vw;
             text-align: center;
         }
+        @media screen and (max-width: 750px) {
+            max-width: 80vw;
+        }
+        @media screen and (max-width: 550px) {
+            max-width: 60vw;
+        }
     }
 
     ul {
@@ -29,13 +35,16 @@
         columns: 2;
         list-style-position: inside;
         display: inline-block;
-        text-align: left;
 
-        @media screen and (max-width: 600px) {
+        @media screen and (max-width: 800px) {
             columns: 1;
-            width: 80vw;
+            width: 100%;
             margin-left: 0;
             padding: 0;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
         }
     }
 }

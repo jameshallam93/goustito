@@ -8,6 +8,7 @@
         border: 1px solid #c0c5c9;
         padding: 0.5em;
     }
+
     input:hover {
         border-color: #3e3ac2;
         border-radius: 3px;
@@ -26,5 +27,12 @@
         margin: auto;
         flex-direction: column;
         text-align: center;
+    }
+    @media screen and (max-width: 550px) {
+        .search-input {
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }

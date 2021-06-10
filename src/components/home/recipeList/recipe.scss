@@ -4,8 +4,9 @@
     display: inline-block;
     padding: 0 1em 2em 1em;
     border: 1px solid transparent;
-
+    text-align: center;
     box-sizing: border-box;
+
     .ingredient-list {
         list-style: url("../../../assets/tickicon.jpg");
     }
@@ -14,7 +15,6 @@
     }
     @media screen and (max-width: 1200px) {
         padding: 0;
-        text-align: center;
     }
 }
 .recipe:hover {
