@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import "./recipe.scss"
+
 interface RecipeProps {
     label: string,
     url: string,
@@ -21,10 +23,13 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ label, url, img, calorie
     const hiddenStyle = { display: isHidden ? "none" : "" };
 
     return (
-        <section className="recipe">
-            <h1 onClick={handleExpand}>{label}</h1>
+        <section
+            className="recipe"
+            onClick={handleExpand}
+        >
+            <h1>{label}</h1>
             <div className="hidden" style={hiddenStyle}>
-                <ul>
+                <ul className="ingredient-list">
                     {
                         ingredients.map(ingredient => {
                             return (<li>{ingredient}</li>)

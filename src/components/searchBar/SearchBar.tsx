@@ -5,6 +5,8 @@ import { useField } from "../../hooks/useField";
 import { SET_RECIPES } from "../../redux/actions";
 import { Checkbox } from "../checkbox/Checkbox";
 
+import "./searchBar.scss"
+
 //todo - create constants file
 const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"];
 
@@ -35,27 +37,32 @@ const SearchBar: React.FunctionComponent = () => {
     }
 
     return (
-        <form onSubmit={handleSearch}>
-            <input
-                type={searchTerms.type}
-                value={searchTerms.value}
-                onChange={searchTerms.onChange}
-                placeholder="search recipes"
-            />
-            {
-                mealTypes.map(type => {
-                    return (
-                        <Checkbox
-                            label={type}
-                            handleCheckboxChange={handleCheckboxChange}
-                        />
-                    )
-                })
-            }
-            <input
-                type="submit"
-            />
-        </form>
+        <section className="search-bar">
+            <h3>Search through over 2.3 million recipes from all over the web!</h3>
+            <p>Click on a recipe card to see the ingredients and calories!</p>
+            <form onSubmit={handleSearch}>
+                <input
+                    type={searchTerms.type}
+                    value={searchTerms.value}
+                    onChange={searchTerms.onChange}
+                    placeholder="search recipes"
+                />
+                {
+                    mealTypes.map(type => {
+                        return (
+                            <Checkbox
+                                label={type}
+                                handleCheckboxChange={handleCheckboxChange}
+                            />
+                        )
+                    })
+                }
+                <input
+                    type="submit"
+                    className="submit-button"
+                />
+            </form>
+        </section>
     );
 };
 
