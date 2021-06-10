@@ -43,6 +43,7 @@ const SearchBar: React.FunctionComponent = () => {
 			<p>Click the link on the recipe card to visit the recipe page!</p>
 			<form onSubmit={handleSearch}>
 				<input
+					className="search-input"
 					type={searchTerms.type}
 					value={searchTerms.value}
 					onChange={searchTerms.onChange}
