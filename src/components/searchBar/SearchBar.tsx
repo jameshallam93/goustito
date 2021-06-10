@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { recipeRequests } from "../../axios/recipes";
+import { useField } from "../../hooks/useField";
 import { SET_RECIPES } from "../../redux/actions";
 import { Checkbox } from "../checkbox/Checkbox";
 
@@ -10,21 +11,16 @@ const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"];
 const SearchBar: React.FunctionComponent = () => {
 
     const dispatch = useDispatch();
-    const [searchTerms, setSearchTerms] = useState<string>("");
-    const [checkedMealTypes, setCheckedMealTypes] = useState<Array<string>>([]);
+    const searchTerms = useField("text");
 
+    const [checkedMealTypes, setCheckedMealTypes] = useState<Array<string>>([]);
 
     const handleSearch = async (event: React.FormEvent) => {
         event.preventDefault();
-        const results = await recipeRequests.searchByName(searchTerms, checkedMealTypes);
+        const results = await recipeRequests.searchByName(searchTerms.value, checkedMealTypes);
 
         dispatch(SET_RECIPES(results.hits));
         return;
-    };
-
-    const handleTermChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        event.preventDefault();
-        setSearchTerms(event.target.value);
     };
 
     const handleCheckboxChange = (label: string) => {
@@ -41,10 +37,10 @@ const SearchBar: React.FunctionComponent = () => {
     return (
         <form onSubmit={handleSearch}>
             <input
-                type="text"
-                value={searchTerms}
-                onChange={handleTermChange}
-                placeholder="name"
+                type={searchTerms.type}
+                value={searchTerms.value}
+                onChange={searchTerms.onChange}
+                placeholder="search recipes"
             />
             {
                 mealTypes.map(type => {
