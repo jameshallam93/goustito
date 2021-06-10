@@ -1,28 +1,38 @@
 
 export type Recipe = {
-    label: string,
-    url: string,
+	label: string,
+	url: string,
 }
 
+interface ActionWithPayload {
+	type: string,
+	payload: {
+		recipes: Recipe[]
+	}
+}
 
-export const SET_RECIPES = (recipes: Recipe[]) => {
-    return {
-        type: "SET_RECIPES",
-        payload: {
-            recipes
-        }
-    }
+interface PlainAction {
+	type: string;
 }
-export const SHOW_NEXT_PAGE = () => {
-    return {
-        type: "SHOW_NEXT_PAGE"
-    }
-}
-export const SHOW_PREVIOUS_PAGE = () => {
-    return {
-        type: "SHOW_PREVIOUS_PAGE"
-    }
-}
+
+export const SET_RECIPES = (recipes: Recipe[]): ActionWithPayload => {
+	return {
+		type: "SET_RECIPES",
+		payload: {
+			recipes
+		}
+	};
+};
+export const SHOW_NEXT_PAGE = (): PlainAction => {
+	return {
+		type: "SHOW_NEXT_PAGE"
+	};
+};
+export const SHOW_PREVIOUS_PAGE = (): PlainAction => {
+	return {
+		type: "SHOW_PREVIOUS_PAGE"
+	};
+};
 
 export type Actions = ReturnType<typeof SET_RECIPES>
 

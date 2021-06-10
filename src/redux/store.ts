@@ -4,7 +4,7 @@ import { recipeReducer } from "./reducer";
 
 
 const store = createStore(recipeReducer, composeWithDevTools(
-    applyMiddleware()
+	applyMiddleware()
 ));
 
 export type RootState = ReturnType<typeof store.getState>;
