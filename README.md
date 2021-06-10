@@ -1,5 +1,7 @@
 ## Goustito - the mini recipe bank
 
+
+### 09/06
 My aim with this app is to create a recipe search using the Edamam api. Ideally recipes will be searched either by recipe name, or by ingredient (the free api allows up to 5 ingredients in one search). I would like to display the following elements:
 
 * Recipe name
@@ -30,3 +32,24 @@ I would like to include the following tech:
 * Bcrypt
 * MongoDB/mongoose
 
+### 10/06
+
+## Limitations update
+
+I have found a couple of glaring limitations in the free api, namely:
+
+* You are limited to 100 search results (the "from" selector in the api is capped at 100)
+* You cannot search by ingredient
+
+This changes the functionality of the site slightly from what I originally intended. I plan to research other recipe APIs to see if they overcome these difficulties, but if not I can live with the reduced functionality
+
+## Extra tech
+
+Since last update, I have also found it necessary to use:
+
+* React-dom-router for handling site navigation
+* eslint
+
+## Next steps
+
+The next big obstacle is creating the back-end to allow for user logins, and saving recipes to a user bank. I will most likely create this in a separate repo and link it at the top of this readme
