@@ -47,7 +47,7 @@ I would like to include the following tech:
 
 ### 10/06
 
-## Limitations update
+#### Limitations update
 
 I have found a couple of glaring limitations in the free api, namely:
 
