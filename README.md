@@ -2,7 +2,9 @@
 
 ## Requirements
 
-* An API key and an API ID for the recipe search API at [Edamam](https://www.edamam.com/) saved as environment variables
+* An API key and an API ID for the recipe search API at [Edamam](https://www.edamam.com/) saved as environment variables:
+* `REACT_APP_API_ID`; and
+* `REACT_APP_EDAMAM_API_KEY`
 
 ## Set up
 
