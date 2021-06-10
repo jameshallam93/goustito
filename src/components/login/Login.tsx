@@ -7,10 +7,12 @@ const Login: React.FunctionComponent = () => {
 
 	const [hidden, changeHidden] = useTogglable(true);
 
-	const handleLogin = () => {
+	const handleLogin = (event: React.FormEvent<HTMLFormElement>, username: string, password: string) => {
+		console.log(username, password);
 		return;
 	};
-	const handleSignup = () => {
+	const handleSignup = (event: React.FormEvent<HTMLFormElement>, username: string, password: string) => {
+		console.log(username, password);
 		return;
 	};
 

@@ -3,7 +3,7 @@ import { useField } from "../../hooks/useField";
 
 interface UserDetailFormProps {
 	heading: string,
-	handleSubmit(event: React.FormEvent<HTMLFormElement>): void,
+	handleSubmit(event: React.FormEvent<HTMLFormElement>, username: string, password: string): void,
 }
 
 const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading, handleSubmit }) => {
@@ -14,7 +14,7 @@ const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading
 	return (
 		<div className="user-details-form">
 			<h1>{heading}</h1>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={(event) => handleSubmit(event, username.value, password.value)}>
 				<input
 					type="text"
 					value={username.value}
