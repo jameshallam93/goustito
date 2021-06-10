@@ -1,0 +1,26 @@
+.recipe-list {
+    display: flex;
+
+    .info {
+        margin-top: 1em;
+        display: block;
+        max-width: 40%;
+        height: inherit;
+        background-color: black;
+        color: #ff3c04;
+        padding: 1em;
+        h1 {
+            font-size: 1.25em;
+        }
+        p {
+            font-size: 0.75em;
+        }
+    }
+
+    ul {
+        list-style: none;
+        columns: 2;
+        list-style-position: inside;
+        display: inline-block;
+    }
+}

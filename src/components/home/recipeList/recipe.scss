@@ -1,0 +1,18 @@
+.recipe {
+    width: 100%;
+    overflow: auto;
+    display: inline-block;
+    padding: 0 1em 2em 1em;
+    border: 1px solid transparent;
+
+    box-sizing: border-box;
+    .ingredient-list {
+        list-style: url("../../../assets/tickicon.jpg");
+    }
+}
+.recipe:hover {
+    border-style: solid;
+    border-color: rgb(225, 223, 223);
+    border-width: 1px;
+    box-shadow: 5px 10px 18px #888888;
+}
