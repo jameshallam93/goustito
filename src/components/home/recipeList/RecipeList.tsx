@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Recipe } from "./Recipe";
-import { RecipeState } from "../../redux/reducer";
+import { RecipeState } from "../../../redux/reducer";
 import { useEffect, useState } from "react";
 
 import "./recipeList.scss";

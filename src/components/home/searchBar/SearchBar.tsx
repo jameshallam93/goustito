@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { recipeRequests } from "../../axios/recipes";
-import { useField } from "../../hooks/useField";
-import { SET_RECIPES } from "../../redux/actions";
-import { Checkbox } from "../checkbox/Checkbox";
+import { recipeRequests } from "../../../axios/recipes";
+import { useField } from "../../../hooks/useField";
+import { SET_RECIPES } from "../../../redux/actions";
+import { Checkbox } from "../../checkbox/Checkbox";
 
 import "./searchBar.scss";
 

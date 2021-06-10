@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE } from "../../redux/actions";
-import { RecipeState } from "../../redux/reducer";
+import { SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE } from "../../../redux/actions";
+import { RecipeState } from "../../../redux/reducer";
 
 import "./pageNavigation.scss";
 const PageNavigation: React.FunctionComponent = () => {

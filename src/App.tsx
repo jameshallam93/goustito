@@ -1,8 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import { Home } from "./components/home/Home";
+import { Login } from "./components/login/Login";
 import { Header } from "./components/pageElements/header/Header";
 import "./app.scss";
+
 
 const App: React.FunctionComponent = () => {
 
@@ -19,7 +22,7 @@ const App: React.FunctionComponent = () => {
 							<h1>Feed</h1>
 						</Route>
 						<Route path="/login">
-							<h1>Login</h1>
+							<Login />
 						</Route>
 					</Switch>
 
