@@ -9,6 +9,9 @@
     .ingredient-list {
         list-style: url("../../../assets/tickicon.jpg");
     }
+    .hide {
+        display: none;
+    }
 }
 .recipe:hover {
     border-style: solid;

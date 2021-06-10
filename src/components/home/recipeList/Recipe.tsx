@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import { useTogglable } from "../../../hooks/useTogglable";
 
 import "./recipe.scss";
 
@@ -13,22 +14,15 @@ interface RecipeProps {
 }
 
 const Recipe: React.FunctionComponent<RecipeProps> = ({ label, url, img, calories, source, ingredients, servings }) => {
-	const [isHidden, setIsHidden] = useState<boolean>(true);
-
-	const handleExpand = () => {
-		setIsHidden(!isHidden);
-	};
-
-	//todo - move this logic to scss file - change handleExpand to alter className of hidden div
-	const hiddenStyle = { display: isHidden ? "none" : "" };
+	const [isHidden, setIsHidden] = useTogglable(true);
 
 	return (
 		<section
 			className="recipe"
-			onClick={handleExpand}
+			onClick={setIsHidden}
 		>
 			<h1>{label}</h1>
-			<div className="hidden" style={hiddenStyle}>
+			<div className={`${isHidden && "hide"}`}>
 				<ul className="ingredient-list">
 					{
 						ingredients.map(ingredient => {
@@ -43,8 +37,6 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ label, url, img, calorie
 			<img src={img} alt="food"></img>
 			<div></div>
 			<a href={url}>{source}</a>
-
-
 		</section>
 	);
 };
