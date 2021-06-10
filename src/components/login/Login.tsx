@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { UserDetailsForm } from "./UserDetailsForm";
 import "./login.scss";
+import { useTogglable } from "../../hooks/useTogglable";
 
 const Login: React.FunctionComponent = () => {
 
-	const [hidden, setHidden] = useState<boolean>(true);
+	const [hidden, changeHidden] = useTogglable(true);
 
 	const handleLogin = () => {
 		return;
@@ -13,12 +14,6 @@ const Login: React.FunctionComponent = () => {
 		return;
 	};
 
-	const expandSignup = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-		event.preventDefault();
-		setHidden(!hidden);
-	};
-
-	const signupStyle = { display: hidden ? "none" : "" };
 	const signupButtonText = hidden ? "Signup" : "Hide Signup";
 
 	return (
@@ -28,19 +23,13 @@ const Login: React.FunctionComponent = () => {
 					heading="Login"
 					handleSubmit={handleLogin}
 				/>
-				<div className="spacer" />
-				<button
-					className="login-form-button"
-					onClick={expandSignup}
-				>
-					{signupButtonText}
-				</button>
 			</div>
 			<div className="spacer" />
-			<div
-				className="sign-up-form"
-				style={signupStyle}
-			>
+			<button onClick={changeHidden}>
+				{signupButtonText}
+			</button>
+			<div className="spacer" />
+			<div className={`sign-up-form ${!hidden && "display"}`}>
 				<p>N.B. This app is designed for demo purposes only - passwords are hashed, but it is STRONGLY recommended not to use existing passwords</p>
 				<UserDetailsForm
 					heading="Signup"
