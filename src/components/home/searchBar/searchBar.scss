@@ -21,4 +21,10 @@
     .submit-button:hover {
         background-color: #0b03ff;
     }
+    @media screen and (max-width: 1200px) {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+        text-align: center;
+    }
 }

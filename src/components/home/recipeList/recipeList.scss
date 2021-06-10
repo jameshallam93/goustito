@@ -1,6 +1,8 @@
 .recipe-list {
     display: flex;
-
+    @media screen and (max-width: 1200px) {
+        flex-direction: column;
+    }
     .info {
         margin-top: 1em;
         display: block;
@@ -15,6 +17,11 @@
         p {
             font-size: 0.75em;
         }
+        @media screen and (max-width: 1200px) {
+            margin: auto;
+            width: 80vw;
+            text-align: center;
+        }
     }
 
     ul {
@@ -22,5 +29,13 @@
         columns: 2;
         list-style-position: inside;
         display: inline-block;
+        text-align: left;
+
+        @media screen and (max-width: 600px) {
+            columns: 1;
+            width: 80vw;
+            margin-left: 0;
+            padding: 0;
+        }
     }
 }

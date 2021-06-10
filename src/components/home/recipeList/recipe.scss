@@ -12,6 +12,10 @@
     .hide {
         display: none;
     }
+    @media screen and (max-width: 1200px) {
+        padding: 0;
+        text-align: center;
+    }
 }
 .recipe:hover {
     border-style: solid;
