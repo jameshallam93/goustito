@@ -1,4 +1,5 @@
 import axios from "axios";
+
 import { generateRequest } from "./generateRequest";
 
 const recipeRequests = {

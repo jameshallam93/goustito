@@ -4,13 +4,13 @@ export type Recipe = {
 	url: string,
 }
 
-interface ActionWithRecipesPayload {
+type ActionWithRecipesPayload = {
 	type: string,
 	payload: {
 		recipes: Recipe[]
 	}
 }
-export interface ActionWithSearchPayload {
+export type ActionWithSearchPayload = {
 	type: string,
 	payload: {
 		searchTerms: string,
@@ -18,7 +18,7 @@ export interface ActionWithSearchPayload {
 	}
 }
 
-interface PlainAction {
+type PlainAction = {
 	type: string;
 }
 

@@ -5,15 +5,6 @@ import { put, takeLatest, all, call } from "redux-saga/effects";
 import { recipeRequests } from "../axios/recipes";
 import { ActionWithSearchPayload } from "./actions";
 
-export interface ResponseGenerator {
-	config?: any,
-	data?: any,
-	headers?: any,
-	request?: any,
-	status?: number,
-	statusText?: string
-}
-
 function* fetchRecipes(action: ActionWithSearchPayload): Generator<
 	any,
 	any,

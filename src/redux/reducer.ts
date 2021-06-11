@@ -1,7 +1,7 @@
 import { Actions } from "./actions";
 
 
-export interface RecipeState {
+export type RecipeState = {
 	recipes: string[];
 	resultsShown: {
 		from: number,
