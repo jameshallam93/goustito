@@ -1,15 +1,20 @@
 import React from "react";
+import { useState } from "react";
 import { useField } from "../../hooks/useField";
+import { DetailsValidator } from "./DetailsValidator";
 
 interface UserDetailFormProps {
 	heading: string,
 	handleSubmit(event: React.FormEvent<HTMLFormElement>, username: string, password: string): void,
+	requireValidation: boolean
 }
 
-const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading, handleSubmit }) => {
+const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading, handleSubmit, requireValidation }) => {
 
 	const username = useField("text");
 	const password = useField("text");
+
+	const [validDetails, setValidDetails] = useState(false);
 
 	return (
 		<div className="user-details-form">
@@ -22,7 +27,7 @@ const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading
 					placeholder="username"
 				/>
 				<input
-					type="text"
+					type="password"
 					value={password.value}
 					onChange={password.onChange}
 					placeholder="password"
@@ -31,8 +36,17 @@ const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading
 				<input
 					type="submit"
 					className="login-form-button"
+					disabled={requireValidation ? !validDetails : false}
 				/>
 			</form>
+			{
+				requireValidation &&
+				<DetailsValidator
+					username={username.value}
+					password={password.value}
+					setValidDetails={setValidDetails}
+				/>
+			}
 		</div>
 	);
 };

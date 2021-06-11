@@ -24,6 +24,7 @@ const Login: React.FunctionComponent = () => {
 				<UserDetailsForm
 					heading="Login"
 					handleSubmit={handleLogin}
+					requireValidation={false}
 				/>
 			</div>
 
@@ -40,6 +41,7 @@ const Login: React.FunctionComponent = () => {
 				<UserDetailsForm
 					heading="Signup"
 					handleSubmit={handleSignup}
+					requireValidation={true}
 				/>
 			</div>
 
