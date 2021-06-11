@@ -4,10 +4,17 @@ export type Recipe = {
 	url: string,
 }
 
-interface ActionWithPayload {
+interface ActionWithRecipesPayload {
 	type: string,
 	payload: {
 		recipes: Recipe[]
+	}
+}
+export interface ActionWithSearchPayload {
+	type: string,
+	payload: {
+		searchTerms: string,
+		mealTypes: string[]
 	}
 }
 
@@ -15,7 +22,17 @@ interface PlainAction {
 	type: string;
 }
 
-export const SET_RECIPES = (recipes: Recipe[]): ActionWithPayload => {
+export const GET_RECIPES = (searchTerms: string, mealTypes: string[]): ActionWithSearchPayload => {
+	return {
+		type: "GET_RECIPES",
+		payload: {
+			searchTerms,
+			mealTypes
+		}
+	};
+};
+
+export const SET_RECIPES = (recipes: Recipe[]): ActionWithRecipesPayload => {
 	return {
 		type: "SET_RECIPES",
 		payload: {
