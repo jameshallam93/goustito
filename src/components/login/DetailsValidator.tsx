@@ -1,5 +1,5 @@
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+
 import { validators } from "./validators/validators";
 
 import "./detailsValidator.scss";

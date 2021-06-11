@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
+
 import { RecipeState } from "../../../redux/reducer";
 
 import loadingIcon from "../../../assets/loading-icon.gif";
-
 import "./loading.scss";
 
 const Loading: React.FunctionComponent = () => {

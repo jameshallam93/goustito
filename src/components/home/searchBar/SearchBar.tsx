@@ -1,9 +1,9 @@
 import React from "react";
 
-
-import "./searchBar.scss";
 import { SearchForm } from "./SearchForm";
 import { SearchInfo } from "./SearchInfo";
+import "./searchBar.scss";
+
 
 //todo - create constants file
 

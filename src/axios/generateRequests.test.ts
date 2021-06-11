@@ -1,5 +1,6 @@
-import { generateRequest } from "./generateRequest";
 import "@testing-library/jest-dom/extend-expect";
+
+import { generateRequest } from "./generateRequest";
 
 const emptySearchTerm = "";
 const emptyMealType: Array<string> = [];

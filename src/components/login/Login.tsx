@@ -1,7 +1,10 @@
 import React from "react";
-import { UserDetailsForm } from "./UserDetailsForm";
-import "./login.scss";
+
 import { useTogglable } from "../../hooks/useTogglable";
+import { UserDetailsForm } from "./UserDetailsForm";
+
+import "./login.scss";
+
 
 const Login: React.FunctionComponent = () => {
 

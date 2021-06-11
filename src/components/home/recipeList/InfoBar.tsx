@@ -1,4 +1,5 @@
 import React from "react";
+
 import "./recipeList.scss";
 
 const InfoBar: React.FunctionComponent = () => { //eslint-disable-line
