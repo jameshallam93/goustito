@@ -1,5 +1,4 @@
 
-
 const validators = {
 
 	numberRegex: /\d/g,

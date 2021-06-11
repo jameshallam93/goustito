@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { useField } from "../../hooks/useField";
+import { useField } from "../../../hooks/useField";
 import { DetailsValidator } from "./DetailsValidator";
 
 interface UserDetailFormProps {
