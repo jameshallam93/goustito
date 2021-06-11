@@ -1,5 +1,6 @@
 import React from "react";
 import { useTogglable } from "../../../hooks/useTogglable";
+import { IngredientList } from "./IngredientList";
 
 import "./recipe.scss";
 
@@ -15,7 +16,7 @@ interface RecipeProps {
 
 const Recipe: React.FunctionComponent<RecipeProps> = ({ label, url, img, calories, source, ingredients, servings }) => {
 	const [isHidden, setIsHidden] = useTogglable(true);
-
+	//todo -find a way to stop event bubbling when clicking on "a" tag - maybe switch to span?
 	return (
 		<section
 			className="recipe"
@@ -23,13 +24,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ label, url, img, calorie
 		>
 			<h1>{label}</h1>
 			<div className={`${isHidden && "hide"}`}>
-				<ul className="ingredient-list">
-					{
-						ingredients.map(ingredient => {
-							return (<li key={ingredient}>{ingredient}</li>);
-						})
-					}
-				</ul>
+				<IngredientList ingredients={ingredients} />
 				<p>Calories: {Math.floor(calories)}</p>
 				<p>Servings: {servings} </p>
 			</div>
