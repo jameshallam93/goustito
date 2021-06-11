@@ -26,11 +26,15 @@ const Login: React.FunctionComponent = () => {
 					handleSubmit={handleLogin}
 				/>
 			</div>
+
 			<div className="spacer" />
+
 			<button onClick={changeHidden}>
 				{signupButtonText}
 			</button>
+
 			<div className="spacer" />
+
 			<div className={`sign-up-form ${hidden && "hide"}`}>
 				<p>N.B. This app is designed for demo purposes only - passwords are hashed, but it is STRONGLY recommended not to use existing passwords</p>
 				<UserDetailsForm
