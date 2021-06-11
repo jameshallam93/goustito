@@ -66,3 +66,16 @@ Since last update, I have also found it necessary to use:
 #### Next steps
 
 The next big obstacle is creating the back-end to allow for user logins, and saving recipes to a user bank. I will most likely create this in a separate repo and link it at the top of this readme
+
+
+### 11/06
+
+The front-end has come together very nicely so far. I have recently added:
+
+* Username and password live validation (list of requirements that turn green when they are met, disabled submit button until all met)
+* Redux sagas, for handling the api requests - this has also allowed me to add an `isLoading` data field to `RecipeState`, and a loading component to the home page
+* Responsive media queries to the home page - providing I don't make any major structural changes, the home page can be considered responsive for all major media types.
+
+I have also been on a big refactor this morning, and started writing unit tests for a lot of trickier modules. I'm continuing on with my aim to avoid using useState in components wherever possible, preferring custom hooks or redux store wherever practical.
+
+I intend to complete two more tickets today, globalising repeat components (button etc.) and adding a Notification component. After that I will probably break for the day, and come back tomorrow ready to start building the back-end.
