@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { generateRequest } from "./generateRequest";
 
-const recipeRequests = {
+const recipeService = {
 
 	async searchByName(searchTerms: string, mealTypes: string[]) { //eslint-disable-line
 		const request = generateRequest(searchTerms, mealTypes);
@@ -11,4 +11,4 @@ const recipeRequests = {
 	}
 };
 
-export { recipeRequests };
+export { recipeService };

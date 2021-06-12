@@ -4,7 +4,6 @@ import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
 
-
 interface SignupFormProps {
 	hidden: boolean
 }

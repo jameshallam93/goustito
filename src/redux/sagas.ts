@@ -2,7 +2,7 @@
 
 import { put, takeLatest, all, call } from "redux-saga/effects";
 
-import { recipeRequests } from "../axios/recipes";
+import { recipeService } from "../axios/recipes";
 import { ActionWithSearchPayload } from "./actions";
 
 function* fetchRecipes(action: ActionWithSearchPayload): Generator<
@@ -10,7 +10,7 @@ function* fetchRecipes(action: ActionWithSearchPayload): Generator<
 	any,
 	any
 > {
-	const recipes: any = yield call(recipeRequests.searchByName, action.payload.searchTerms, action.payload.mealTypes);
+	const recipes: any = yield call(recipeService.searchByName, action.payload.searchTerms, action.payload.mealTypes);
 	yield put({ type: "SET_RECIPES", payload: recipes.hits });
 }
 
