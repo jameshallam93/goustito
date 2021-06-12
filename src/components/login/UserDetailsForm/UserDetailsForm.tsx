@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useField } from "../../../hooks/useField";
 import { DetailsValidator } from "./DetailsValidator";
 
+
 interface UserDetailFormProps {
 	heading: string,
 	handleSubmit(event: React.FormEvent<HTMLFormElement>, username: string, password: string): void,
@@ -14,11 +15,23 @@ const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading
 	const username = useField("text");
 	const password = useField("text");
 
+	const hideOrShowButton = () => {
+		if (requireValidation) {
+			if (validDetails) {
+				return "show";
+			}
+			return "hide";
+		}
+		return "show";
+	};
+
 	const [validDetails, setValidDetails] = useState(false);
 
 	return (
 		<div className="user-details-form">
+
 			<h1>{heading}</h1>
+
 			<form onSubmit={(event) => handleSubmit(event, username.value, password.value)}>
 				<input
 					type="text"
@@ -35,8 +48,7 @@ const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading
 				<div className="spacer" />
 				<input
 					type="submit"
-					className="login-form-button"
-					disabled={requireValidation ? !validDetails : false}
+					className={`login-form-button ${hideOrShowButton()}`}
 				/>
 			</form>
 			{
