@@ -1,8 +1,7 @@
-## Goustito - the mini recipe bank
+# Goustito - the mini recipe bank
 
-Having realised that this repo has been cloned a number of times since starting it, I have decided to make it private for fear of copyright issues arising.
-It is not my intention to release this app, and it is entirely made for demo purposes. Once it is finished I may rename it, switch the style up and release it as a portfolio project.
-
+## Backend:
+https://github.com/jameshallam93/goustitoServer
 
 ## Requirements
 
