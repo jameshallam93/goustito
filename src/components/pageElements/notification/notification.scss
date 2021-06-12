@@ -1,0 +1,14 @@
+.notification {
+    text-align: center;
+
+    .error {
+        color: white;
+        background-color: #fb0434;
+        border-radius: 4px;
+    }
+    .message {
+        color: white;
+        background-color: black;
+        border-radius: 4px;
+    }
+}
