@@ -16,13 +16,10 @@ const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading
 	const password = useField("text");
 
 	const hideOrShowButton = () => {
-		if (requireValidation) {
-			if (validDetails) {
-				return "show";
-			}
-			return "hide";
+		if (!requireValidation || validDetails) {
+			return "show";
 		}
-		return "show";
+		return "hide";
 	};
 
 	const [validDetails, setValidDetails] = useState(false);

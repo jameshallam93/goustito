@@ -3,7 +3,7 @@ import React from "react";
 import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
-import { loginService } from "../../axios/login";
+import { loginService } from "../../services/login";
 
 const LoginForm: React.FunctionComponent = () => {
 
@@ -15,9 +15,7 @@ const LoginForm: React.FunctionComponent = () => {
 			username,
 			password
 		});
-		console.log(response);
-		const user = response?.data;
-		console.log(user);
+		const user = response.data;
 		setNotification({ type: MessageType.message, message: `${user.username} logged in successfully` });
 		return;
 	};

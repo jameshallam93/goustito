@@ -1,8 +1,13 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 const baseUrl = "http://localhost:3001";
 
+export type Credentials = {
+	username: string,
+	password: string
+}
+
 export const loginService = {
-	async attemptLogin(credentials: any): Promise<any> {
+	async attemptLogin(credentials: Credentials): Promise<AxiosResponse> {
 		try {
 			const request = `${baseUrl}/api/login`;
 			const response = await axios.post(request, credentials);
