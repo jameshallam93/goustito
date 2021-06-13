@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 import { RecipeState } from "../../../redux/reducer";
+import { RecipeType } from "../../../services/recipes";
 import { InfoBar } from "./InfoBar";
 import { Recipe } from "./Recipe";
 
-
-
 import "./recipeList.scss";
+
 interface ResultsShown {
 	from: number,
 	to: number
@@ -15,7 +15,7 @@ interface ResultsShown {
 
 const RecipeList: React.FunctionComponent = () => {
 
-	const [currentRecipes, setCurrentRecipes] = useState([]);
+	const [currentRecipes, setCurrentRecipes] = useState<RecipeType[]>([]);
 
 	const allRecipes: any = useSelector<RecipeState>((state) => state.recipes[0]); //eslint-disable-line
 	const resultsToShow = useSelector<RecipeState, ResultsShown>((state) => state.resultsShown);
@@ -37,15 +37,9 @@ const RecipeList: React.FunctionComponent = () => {
 				{
 					currentRecipes && currentRecipes.map((recipe: any) => { //eslint-disable-line
 						return (
-							<li key={recipe.recipe.id}>
+							<li key={recipe.id}>
 								<Recipe
-									label={recipe.recipe.label}
-									url={recipe.recipe.url}
-									img={recipe.recipe.image}
-									calories={recipe.recipe.calories}
-									source={recipe.recipe.source}
-									ingredients={recipe.recipe.ingredientLines}
-									servings={recipe.recipe.yield}
+									recipe={recipe}
 								/>
 							</li>
 						);
