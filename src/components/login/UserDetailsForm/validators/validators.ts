@@ -16,6 +16,14 @@ const validators = {
 
 	passwordLength(password: string): boolean { return (password.length >= 6); },
 
+	passwordContainsNumber(password: string): boolean {
+		return this.numberRegex.test(password);
+	},
+
+	passwordContainsSpecial(password: string): boolean {
+		return this.specialRegex.test(password);
+	},
+
 	passwordContainsUpper(password: string): boolean {
 		const characters = password.split("");
 		let upperIsPresent = false;
@@ -30,15 +38,7 @@ const validators = {
 			}
 		});
 		return upperIsPresent;
-	},
-
-	passwordContainsNumber(password: string): boolean {
-		return this.numberRegex.test(password);
-	},
-	passwordContainsSpecial(password: string): boolean {
-		return this.specialRegex.test(password);
-	},
-
+	}
 };
 
 export { validators };
