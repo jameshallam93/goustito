@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { useField } from "../../../hooks/useField";
 import { GET_RECIPES } from "../../../redux/actions";
 import { CheckboxArray } from "../../checkbox/CheckboxArray";
-
-const mealTypes = ["Breakfast", "Lunch", "Dinner", "Snack"];
+import { MEAL_TYPES } from "../../../constants";
 
 const SearchForm: React.FunctionComponent = () => {
 
@@ -16,7 +15,7 @@ const SearchForm: React.FunctionComponent = () => {
 
 	const handleSearch = async (event: React.FormEvent) => {
 		event.preventDefault();
-		dispatch(GET_RECIPES(searchTerms.value, mealTypes));
+		dispatch(GET_RECIPES(searchTerms.value, MEAL_TYPES));
 	};
 
 	const handleCheckboxChange = (label: string) => {
@@ -40,7 +39,7 @@ const SearchForm: React.FunctionComponent = () => {
 				placeholder="search recipes"
 			/>
 			<CheckboxArray
-				categories={mealTypes}
+				categories={MEAL_TYPES}
 				handleCheckboxChange={handleCheckboxChange}
 			/>
 			<input
