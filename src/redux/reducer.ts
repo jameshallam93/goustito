@@ -1,5 +1,5 @@
 import { Actions } from "./actions";
-
+import { RESULTS_PER_PAGE } from "../constants";
 
 export type RecipeState = {
 	recipes: string[];
@@ -14,7 +14,7 @@ const initialState = {
 	recipes: [],
 	resultsShown: {
 		from: 0,
-		to: 10
+		to: RESULTS_PER_PAGE
 	},
 	isLoading: false
 };
@@ -32,7 +32,7 @@ const recipeReducer: any = (state: RecipeState = initialState, action: Actions) 
 			recipes: [action.payload],
 			resultsShown: {
 				from: 0,
-				to: 10
+				to: RESULTS_PER_PAGE
 			},
 			isLoading: false
 		};
@@ -48,16 +48,16 @@ const recipeReducer: any = (state: RecipeState = initialState, action: Actions) 
 		return {
 			...state,
 			resultsShown: {
-				from: state.resultsShown.from + 10,
-				to: state.resultsShown.to + 10
+				from: state.resultsShown.from + RESULTS_PER_PAGE,
+				to: state.resultsShown.to + RESULTS_PER_PAGE
 			}
 		};
 	case "SHOW_PREVIOUS_PAGE":
 		return {
 			...state,
 			resultsShown: {
-				from: state.resultsShown.from - 10,
-				to: state.resultsShown.to - 10
+				from: state.resultsShown.from - RESULTS_PER_PAGE,
+				to: state.resultsShown.to - RESULTS_PER_PAGE
 			}
 		};
 	default:

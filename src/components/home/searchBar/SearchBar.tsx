@@ -2,10 +2,8 @@ import React from "react";
 
 import { SearchForm } from "./SearchForm";
 import { SearchInfo } from "./SearchInfo";
+
 import "./searchBar.scss";
-
-
-//todo - create constants file
 
 const SearchBar: React.FunctionComponent = () => {
 
