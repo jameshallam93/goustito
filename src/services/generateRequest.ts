@@ -19,8 +19,7 @@ const generateSearchTermString = (searchTerms: string) => {
 	if (split.length === 1) {
 		return split[0];
 	}
-	const rejoined = split.join("%20");
-	return rejoined;
+	return split.join("%20");
 };
 
 export const generateRequest = (searchTerms: string, mealTypes: string[]): string => {
