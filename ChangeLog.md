@@ -75,5 +75,10 @@ I intend to complete two more tickets today, globalising repeat components (butt
  I do not intend to make the server more complicated than it needs to be, but there are some middlewares I'd like to introduce, detailed in a ticket in the server repository.
  
  
+ ### 13/06 
+ 
+ I have noticed that I have stopped being as focussed when working and have lapsed out of good habits and have made a couple of messy commits. To rectify this, I will focus on ensuring that I am always working on one ticket and one only at a time, and that all tickets/documentation are filled in completely.
+ 
+ Further, Edamam have just released a 2nd version of their API, which seems to focus on efficiency and reducing bandwidth. They continue to offer support for version 1, and presumably will carry on doing so for some time, but I could imagine that they will phase out V1 at some stage - it is worth exploring whether it is worth the effort now to switch over, and whether this will affect site functionality.
  
  
