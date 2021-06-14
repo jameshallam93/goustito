@@ -111,5 +111,23 @@ export const SAVE_RECIPE = (recipeId: string, username: string): ActionWithSaved
 		}
 	};
 };
+export const DELETE_USER_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+	return {
+		type: "DELETE_USER_RECIPE",
+		payload: {
+			recipeId,
+			username
+		}
+	};
+};
+export const DELETE_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+	return {
+		type: "DELETE_RECIPE",
+		payload: {
+			recipeId,
+			username
+		}
+	};
+};
 export type Actions = ReturnType<typeof SET_RECIPES>
 

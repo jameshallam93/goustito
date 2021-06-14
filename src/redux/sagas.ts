@@ -24,17 +24,27 @@ function* saveRecipe(action: ActionWithSavedRecipePayload): Generator<
 	yield put({ type: "SAVE_RECIPE", payload: action.payload.recipeId })
 }
 
+function* deleteRecipe(action: ActionWithSavedRecipePayload): Generator<
+	any,
+	any,
+	any
+> {
+	yield call(recipeService.deleteFromVault, action.payload.recipeId, action.payload.username);
+	yield put({ type: "DELETE_RECIPE", payload: action.payload.recipeId })
+}
+
 function* recipeWatcher() {
 	yield takeLatest("GET_RECIPES", fetchRecipes);
 }
 
-function* saveRecipeWatcher() {
+function* saveOrRemoveRecipeWatcher() {
 	yield takeLatest("SAVE_USER_RECIPE", saveRecipe)
+	yield takeLatest("DELETE_USER_RECIPE", deleteRecipe)
 }
 
 export default function* rootSaga() {
 	yield all([
 		recipeWatcher(),
-		saveRecipeWatcher()
+		saveOrRemoveRecipeWatcher()
 	]);
 }

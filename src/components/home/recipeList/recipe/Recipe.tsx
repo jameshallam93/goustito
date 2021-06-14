@@ -7,7 +7,7 @@ import { SaveButton } from "./SaveButton";
 
 import "./recipe.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { SAVE_USER_RECIPE } from "../../../../redux/actions";
+import { DELETE_USER_RECIPE, SAVE_USER_RECIPE } from "../../../../redux/actions";
 import { AppState } from "../../../../redux/store";
 import { useEffect } from "react";
 
@@ -32,20 +32,20 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 		}
 	}, []);
 
-	const saveRecipe = (event: React.MouseEvent) => {
+	const saveOrDeleteRecipe = (event: React.MouseEvent) => {
 		event.stopPropagation();
-		if (!isSaved) {
-			setIsSaved();
-			if (currentUser) {
+		if (currentUser) {
+			if (!isSaved) {
+				setIsSaved();
 				dispatch(SAVE_USER_RECIPE(id, currentUser));
+				return;
 			}
+			setIsSaved();
+			dispatch(DELETE_USER_RECIPE(id, currentUser));
 			return;
 		}
-		setIsSaved();
-		//dispatch(DELETE_USER_RECIPE(id));
-		return;
-
 	};
+
 	//todo -find a way to stop event bubbling when clicking on "a" tag - maybe switch to span?
 	return (
 		<section
@@ -54,7 +54,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 		>
 			<h1>{label}</h1>
 			<SaveButton
-				onClick={saveRecipe}
+				onClick={saveOrDeleteRecipe}
 				isSaved={isSaved}
 			/>
 

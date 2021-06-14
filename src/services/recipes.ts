@@ -51,6 +51,11 @@ const recipeService = {
 		const response = await axios.post(request, { recipeId, username });
 		console.log(response);
 		return response.data;
+	},
+	async deleteFromVault(recipeId: string, username: string): Promise<AxiosResponse> {
+		const request = `${baseUrl}/api/recipe/deleteById`;
+		const response = await axios.post(request, { recipeId, username });
+		return response.data;
 	}
 };
 

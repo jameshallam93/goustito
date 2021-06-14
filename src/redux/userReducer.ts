@@ -48,7 +48,14 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 				action.payload
 			]
 		};
-
+	case "DELETE_RECIPE":
+			const newRecipes = state.recipes.filter(recipe => recipe !== action.payload); //eslint-disable-line
+		return {
+			...state,
+			recipes: [
+				...newRecipes
+			]
+		};
 	default:
 		return state;
 	}
