@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-import { RecipeState } from "../../../redux/recipeReducer";
 import { AppState } from "../../../redux/store";
 import { RecipeType } from "../../../services/recipes";
 import { InfoBar } from "./InfoBar";
-import { Recipe } from "./Recipe";
+import { Recipe } from "./recipe/Recipe";
 
 import "./recipeList.scss";
 

@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Home } from "./components/home/Home";
 import { LoginPage } from "./components/login/LoginPage";
 import { Header } from "./components/pageElements/header/Header";
+import { UserVault } from "./components/vault/UserVault";
 
 import "./app.scss";
 
@@ -24,6 +25,9 @@ const App: React.FunctionComponent = () => {
 						</Route>
 						<Route path="/login">
 							<LoginPage />
+						</Route>
+						<Route path="/vault">
+							<UserVault />
 						</Route>
 					</Switch>
 
