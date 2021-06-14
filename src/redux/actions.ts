@@ -1,5 +1,5 @@
 
-export type Recipe = {
+export type RecipeType = {
 	label: string,
 	url: string,
 }
@@ -7,7 +7,13 @@ export type Recipe = {
 export type ActionWithRecipesPayload = {
 	type: string,
 	payload: {
-		recipes: Recipe[]
+		recipes: RecipeType[]
+	}
+}
+export type ActionWithSavedRecipePayload = {
+	type: string,
+	payload: {
+		recipeId: string
 	}
 }
 export type ActionWithSearchPayload = {
@@ -39,7 +45,7 @@ export const GET_RECIPES = (searchTerms: string, mealTypes: string[]): ActionWit
 	};
 };
 
-export const SET_RECIPES = (recipes: Recipe[]): ActionWithRecipesPayload => {
+export const SET_RECIPES = (recipes: RecipeType[]): ActionWithRecipesPayload => {
 	return {
 		type: "SET_RECIPES",
 		payload: {
@@ -77,5 +83,22 @@ export const CLEAR_USER_DETAILS = (): ActionWithUserPayload => {
 	};
 };
 
+export const INIT_USER_RECIPES = (recipeIds: string[]) => {
+	return {
+		type: "INIT_USER_RECIPES",
+		payload: {
+			recipeIds
+		}
+	};
+};
+
+export const SAVE_USER_RECIPE = (recipeId: string): ActionWithSavedRecipePayload => {
+	return {
+		type: "SAVE_USER_RECIPE",
+		payload: {
+			recipeId
+		}
+	};
+};
 export type Actions = ReturnType<typeof SET_RECIPES>
 

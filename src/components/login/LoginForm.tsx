@@ -5,7 +5,7 @@ import { Notification, MessageType } from "../pageElements/notification/Notifica
 import { useNotification } from "../../hooks/useNotification";
 import { loginService } from "../../services/login";
 import { useDispatch } from "react-redux";
-import { SET_USER_DETAILS } from "../../redux/actions";
+import { INIT_USER_RECIPES, SET_USER_DETAILS } from "../../redux/actions";
 
 const LoginForm: React.FunctionComponent = () => {
 
@@ -21,11 +21,12 @@ const LoginForm: React.FunctionComponent = () => {
 				password
 			});
 			const user = response.data;
-			dispatch(SET_USER_DETAILS(user.username, null));
-			setNotification({ type: MessageType.error, message: `${user.username} logged in successfully` });
+			dispatch(SET_USER_DETAILS(user.username, user.token));
+			dispatch(INIT_USER_RECIPES(user.recipes));
+			setNotification({ type: MessageType.message, message: `${user.username} logged in successfully` });
 			return;
 		} catch (e) {
-			//todo - can I restructure error message data? e.e.respons.data.error is messy
+			//todo - can I restructure error message data? e.e.response.data.error is messy
 			setNotification({ type: MessageType.error, message: e.e.response.data.error });
 		}
 	};
