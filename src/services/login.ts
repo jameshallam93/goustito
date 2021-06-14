@@ -17,7 +17,7 @@ export const loginService = {
 			localStorage.setItem("token", token);
 			localStorage.setItem("username", username);
 			delete response.data.token;
-			return response;
+			return response.data;
 		} catch (e) {
 			throw { e };
 		}

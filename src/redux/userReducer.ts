@@ -3,14 +3,18 @@ export type UserState = {
 	user: {
 		username: string | null
 	},
-	recipes: string[]
+	recipes: string[],
+	loginError: { error: string | null }
 }
 
 const initialState: UserState = {
 	user: {
 		username: null
 	},
-	recipes: []
+	recipes: [],
+	loginError: {
+		error: null
+	}
 };
 
 export const userReducer = (state: UserState = initialState, action: any): UserState => {
@@ -33,7 +37,7 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 		return {
 			...state,
 			recipes: [
-				...action.payload.recipeIds
+				...action.payload.recipes
 			]
 		};
 	case "SAVE_RECIPE":
@@ -51,6 +55,11 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 			recipes: [
 				...newRecipes
 			]
+		};
+	case "LOGIN_ERROR":
+		return {
+			...state,
+			loginError: action.payload.error
 		};
 	default:
 		return state;
