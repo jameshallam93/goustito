@@ -58,7 +58,7 @@ export const SHOW_PREVIOUS_PAGE = (): PlainAction => {
 	};
 };
 
-export const SET_USER_DETAILS = (username: string, token: string): ActionWithUserPayload => {
+export const SET_USER_DETAILS = (username: string, token: string | null): ActionWithUserPayload => {
 	return {
 		type: "SET_USER_DETAILS",
 		payload: {

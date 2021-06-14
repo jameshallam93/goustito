@@ -4,8 +4,12 @@ import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
 import { loginService } from "../../services/login";
+import { useDispatch } from "react-redux";
+import { SET_USER_DETAILS } from "../../redux/actions";
 
 const LoginForm: React.FunctionComponent = () => {
+
+	const dispatch = useDispatch();
 
 	const [notification, setNotification] = useNotification();
 
@@ -17,6 +21,7 @@ const LoginForm: React.FunctionComponent = () => {
 				password
 			});
 			const user = response.data;
+			dispatch(SET_USER_DETAILS(user.username, null));
 			setNotification({ type: MessageType.error, message: `${user.username} logged in successfully` });
 			return;
 		} catch (e) {
