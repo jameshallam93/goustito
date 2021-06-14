@@ -22,7 +22,7 @@ const generateSearchTermString = (searchTerms: string) => {
 	return split.join("%20");
 };
 
-export const generateRequest = (searchTerms: string, mealTypes: string[]): string => {
+export const generateApiRequest = (searchTerms: string, mealTypes: string[]): string => {
 	const searchTermsString = generateSearchTermString(searchTerms);
 	const mealTypeString = generateMealTypeString(mealTypes);
 

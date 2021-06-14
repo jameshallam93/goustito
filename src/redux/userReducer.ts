@@ -1,16 +1,14 @@
 
 export type UserState = {
 	user: {
-		username: string | null,
-		token: string | null
+		username: string | null
 	},
 	recipes: string[]
 }
 
 const initialState: UserState = {
 	user: {
-		username: null,
-		token: null
+		username: null
 	},
 	recipes: []
 };
@@ -21,16 +19,14 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 		return {
 			...state,
 			user: {
-				username: action.payload.username,
-				token: action.payload.token
+				username: action.payload.username
 			}
 		};
 	case "CLEAR_USER_DETAILS":
 		return {
 			...state,
 			user: {
-				username: null,
-				token: null
+				username: null
 			}
 		};
 	case "INIT_USER_RECIPES":
@@ -49,7 +45,7 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 			]
 		};
 	case "DELETE_RECIPE":
-			const newRecipes = state.recipes.filter(recipe => recipe !== action.payload); //eslint-disable-line
+			const newRecipes = state.recipes.filter(recipe => recipe !== action.payload.recipeId); //eslint-disable-line
 		return {
 			...state,
 			recipes: [

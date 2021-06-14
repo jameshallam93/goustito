@@ -1,6 +1,6 @@
 import axios, { AxiosResponse } from "axios";
 
-import { generateRequest } from "./generateRequest";
+import { generateApiRequest } from "./generateApiRequest";
 
 const baseUrl = "http://localhost:3001";
 
@@ -13,6 +13,12 @@ export type RecipeType = {
 	source: string,
 	ingredients: string[],
 	servings: number
+}
+
+
+export type UserValidation = {
+	username: string | null,
+	token: string | null
 }
 
 const harvestRecipeData = (data: any): RecipeType[] => {//eslint-disable-line
@@ -37,25 +43,48 @@ const harvestRecipeData = (data: any): RecipeType[] => {//eslint-disable-line
 
 const recipeService = {
 
-	async searchByName(searchTerms: string, mealTypes: string[]) { //eslint-disable-line
-		const request = generateRequest(searchTerms, mealTypes);
+	async searchByName(searchTerms: string, mealTypes: string[]): Promise<RecipeType[]> {
+		const request = generateApiRequest(searchTerms, mealTypes);
 		const response = await axios.get(request);
-		console.log(response);
+
 		const filteredResponse = harvestRecipeData(response.data);
-		console.log(filteredResponse);
 		return filteredResponse;
 	},
 
-	async saveToVault(recipeId: string, username: string): Promise<AxiosResponse> {
+	async saveToVault(recipeId: string, currentUser: string): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/saveById`;
-		const response = await axios.post(request, { recipeId, username });
-		console.log(response);
+		const token = localStorage.getItem("token");
+
+		const response = await axios.post(
+			request,
+			{ recipeId, currentUser },
+			{
+				headers: {
+					"authorization": `Bearer ${token}`
+				}
+			}
+		);
 		return response.data;
 	},
-	async deleteFromVault(recipeId: string, username: string): Promise<AxiosResponse> {
+	async deleteFromVault(recipeId: string, currentUser: string): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/deleteById`;
-		const response = await axios.post(request, { recipeId, username });
+		const token = localStorage.getItem("token");
+
+		const response = await axios.post(
+			request,
+			{ recipeId, currentUser },
+			{
+				headers: {
+					authorization: `Bearer ${token}`
+				}
+			}
+		);
+
 		return response.data;
+
+
+
+
 	}
 };
 

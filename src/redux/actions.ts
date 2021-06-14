@@ -1,3 +1,5 @@
+import { UserValidation } from "../services/recipes";
+
 
 export type RecipeType = {
 	label: string,
@@ -14,7 +16,7 @@ export type ActionWithSavedRecipePayload = {
 	type: string,
 	payload: {
 		recipeId: string,
-		username: string
+		currentUser: string
 	}
 }
 export type ActionWithSearchPayload = {
@@ -27,14 +29,14 @@ export type ActionWithSearchPayload = {
 export type ActionWithUserPayload = {
 	type: string,
 	payload: {
-		username: string | null,
-		token: string | null
+		username: string | null
 	}
 }
 
 export type PlainAction = {
 	type: string;
 }
+
 
 export const GET_RECIPES = (searchTerms: string, mealTypes: string[]): ActionWithSearchPayload => {
 	return {
@@ -65,12 +67,11 @@ export const SHOW_PREVIOUS_PAGE = (): PlainAction => {
 	};
 };
 
-export const SET_USER_DETAILS = (username: string, token: string | null): ActionWithUserPayload => {
+export const SET_USER_DETAILS = (username: string): ActionWithUserPayload => {
 	return {
 		type: "SET_USER_DETAILS",
 		payload: {
-			username,
-			token
+			username
 		}
 	};
 };
@@ -79,7 +80,6 @@ export const CLEAR_USER_DETAILS = (): ActionWithUserPayload => {
 		type: "SET_USER_DETAILS",
 		payload: {
 			username: null,
-			token: null
 		}
 	};
 };
@@ -93,39 +93,39 @@ export const INIT_USER_RECIPES = (recipeIds: string[]) => {
 	};
 };
 
-export const SAVE_USER_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const SAVE_USER_RECIPE = (recipeId: string, currentUser: string): ActionWithSavedRecipePayload => {
 	return {
 		type: "SAVE_USER_RECIPE",
 		payload: {
 			recipeId,
-			username
+			currentUser
 		}
 	};
 };
-export const SAVE_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const SAVE_RECIPE = (recipeId: string, currentUser: string): ActionWithSavedRecipePayload => {
 	return {
 		type: "SAVE_RECIPE",
 		payload: {
 			recipeId,
-			username
+			currentUser
 		}
 	};
 };
-export const DELETE_USER_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const DELETE_USER_RECIPE = (recipeId: string, currentUser: string): ActionWithSavedRecipePayload => {
 	return {
 		type: "DELETE_USER_RECIPE",
 		payload: {
 			recipeId,
-			username
+			currentUser
 		}
 	};
 };
-export const DELETE_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const DELETE_RECIPE = (recipeId: string, currentUser: string): ActionWithSavedRecipePayload => {
 	return {
 		type: "DELETE_RECIPE",
 		payload: {
 			recipeId,
-			username
+			currentUser
 		}
 	};
 };
