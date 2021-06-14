@@ -11,13 +11,18 @@ const LoginForm: React.FunctionComponent = () => {
 
 	const handleLogin = async (event: React.FormEvent<HTMLFormElement>, username: string, password: string) => {
 		event.preventDefault();
-		const response = await loginService.attemptLogin({
-			username,
-			password
-		});
-		const user = response.data;
-		setNotification({ type: MessageType.message, message: `${user.username} logged in successfully` });
-		return;
+		try {
+			const response = await loginService.attemptLogin({
+				username,
+				password
+			});
+			const user = response.data;
+			setNotification({ type: MessageType.error, message: `${user.username} logged in successfully` });
+			return;
+		} catch (e) {
+			//todo - can I restructure error message data? e.e.respons.data.error is messy
+			setNotification({ type: MessageType.error, message: e.e.response.data.error });
+		}
 	};
 
 	return (

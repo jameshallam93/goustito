@@ -14,8 +14,6 @@ export const loginService = {
 			return response;
 		} catch (e) {
 			throw { e };
-
 		}
-
 	}
 };
