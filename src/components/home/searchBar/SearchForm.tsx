@@ -3,8 +3,9 @@ import { useDispatch } from "react-redux";
 
 import { useField } from "../../../hooks/useField";
 import { GET_RECIPES } from "../../../redux/actions";
-import { CheckboxArray } from "../../checkbox/CheckboxArray";
+import { CheckboxArray } from "../../globals/checkbox/CheckboxArray";
 import { MEAL_TYPES } from "../../../constants";
+import { InputButton } from "../../globals/button/InputButton";
 
 const SearchForm: React.FunctionComponent = () => {
 
@@ -42,10 +43,7 @@ const SearchForm: React.FunctionComponent = () => {
 				categories={MEAL_TYPES}
 				handleCheckboxChange={handleCheckboxChange}
 			/>
-			<input
-				type="submit"
-				className="submit-button"
-			/>
+			<InputButton />
 		</form>
 	);
 };

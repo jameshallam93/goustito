@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { useField } from "../../../hooks/useField";
 import { DetailsValidator } from "./DetailsValidator";
-
+import { InputButton } from "../../globals/button/InputButton";
 
 interface UserDetailFormProps {
 	heading: string,
@@ -43,10 +43,7 @@ const UserDetailsForm: React.FunctionComponent<UserDetailFormProps> = ({ heading
 					placeholder="password"
 				/>
 				<div className="spacer" />
-				<input
-					type="submit"
-					className={`login-form-button ${hideOrShowButton()}`}
-				/>
+				< InputButton hideOrShow={() => hideOrShowButton()} />
 			</form>
 			{
 				requireValidation &&
