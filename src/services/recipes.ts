@@ -1,6 +1,8 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 import { generateRequest } from "./generateRequest";
+
+const baseUrl = "http://localhost:3001";
 
 export type RecipeType = {
 	id: string,
@@ -42,6 +44,13 @@ const recipeService = {
 		const filteredResponse = harvestRecipeData(response.data);
 		console.log(filteredResponse);
 		return filteredResponse;
+	},
+
+	async saveToVault(recipeId: string, username: string): Promise<AxiosResponse> {
+		const request = `${baseUrl}/api/recipe/saveById`;
+		const response = await axios.post(request, { recipeId, username });
+		console.log(response);
+		return response.data;
 	}
 };
 

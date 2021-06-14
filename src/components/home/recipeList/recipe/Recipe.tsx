@@ -21,6 +21,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 	const dispatch = useDispatch();
 	//todo - move this up to RecipeList component
 	const savedRecipes = useSelector<AppState, string[]>(state => state.users.recipes);
+	const currentUser = useSelector<AppState, string | null>(state => state.users.user.username);
 
 	const [isHidden, setIsHidden] = useTogglable(true);
 	const [isSaved, setIsSaved] = useTogglable(false);
@@ -35,7 +36,9 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 		event.stopPropagation();
 		if (!isSaved) {
 			setIsSaved();
-			dispatch(SAVE_USER_RECIPE(id));
+			if (currentUser) {
+				dispatch(SAVE_USER_RECIPE(id, currentUser));
+			}
 			return;
 		}
 		setIsSaved();

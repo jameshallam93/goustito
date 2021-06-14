@@ -40,12 +40,12 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 				...action.payload.recipeIds
 			]
 		};
-	case "SAVE_USER_RECIPE":
+	case "SAVE_RECIPE":
 		return {
 			...state,
 			recipes: [
 				...state.recipes,
-				action.payload.recipeId
+				action.payload
 			]
 		};
 

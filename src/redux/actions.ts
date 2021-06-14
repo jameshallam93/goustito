@@ -13,7 +13,8 @@ export type ActionWithRecipesPayload = {
 export type ActionWithSavedRecipePayload = {
 	type: string,
 	payload: {
-		recipeId: string
+		recipeId: string,
+		username: string
 	}
 }
 export type ActionWithSearchPayload = {
@@ -92,11 +93,21 @@ export const INIT_USER_RECIPES = (recipeIds: string[]) => {
 	};
 };
 
-export const SAVE_USER_RECIPE = (recipeId: string): ActionWithSavedRecipePayload => {
+export const SAVE_USER_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
 	return {
 		type: "SAVE_USER_RECIPE",
 		payload: {
-			recipeId
+			recipeId,
+			username
+		}
+	};
+};
+export const SAVE_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+	return {
+		type: "SAVE_RECIPE",
+		payload: {
+			recipeId,
+			username
 		}
 	};
 };
