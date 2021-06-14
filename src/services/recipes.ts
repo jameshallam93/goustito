@@ -24,7 +24,7 @@ const harvestRecipeData = (data: any): RecipeType[] => {//eslint-disable-line
 			calories: recipe.recipe.calories,
 			source: recipe.recipe.source,
 			ingredients: recipe.recipe.ingredientLines,
-			servings: recipe.recipe.servings
+			servings: recipe.recipe.yield
 		};
 		recipes.push(harvestedRecipe);
 	});
