@@ -3,6 +3,8 @@ import React from "react";
 import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
+import { signUpService } from "../../services/signUp";
+import { Credentials } from "../../services/login";
 
 interface SignupFormProps {
 	hidden: boolean
@@ -12,10 +14,22 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = ({ hidden }) => {
 
 	const [notification, setNotification] = useNotification();
 
-	const handleSignup = (event: React.FormEvent<HTMLFormElement>, username: string, password: string) => {
+	const handleSignup = async (
+		event: React.FormEvent<HTMLFormElement>,
+		username: string,
+		password: string
+	) => {
 		event.preventDefault();
-		setNotification({ type: MessageType.message, message: "test" });
-		return;
+		try {
+			const credentials: Credentials = {
+				username,
+				password
+			};
+			const response = await signUpService.createNewUser(credentials);
+			setNotification({ type: MessageType.message, message: `${response.data.username} signed up successfully!` });
+		} catch (e) {
+			setNotification({ type: MessageType.error, message: `${e.e.response.data.error}` });
+		}
 	};
 
 	return (
