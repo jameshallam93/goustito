@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { RecipeState } from "../../../redux/reducer";
 import { changePage } from "./changePage";
+import { Button } from "../../globals/button/Button";
+
 import "./pageNavigation.scss";
 
 const PageNavigation: React.FunctionComponent = () => {
@@ -15,18 +17,17 @@ const PageNavigation: React.FunctionComponent = () => {
 
 	return (
 		<div className="page-navigation">
-			<button
-				className={`${endOfList ? "hide" : !recipesAreLoaded && "hide"}`}
+			<Button
+				hideOrShow={() => `${endOfList ? "hide" : !recipesAreLoaded && "hide"}`}
 				onClick={() => changePage("next", dispatch)}
-			>
-				Next
-			</button>
-			<button
-				className={`${startOfList && "hide"}`}
+				label={"next"}
+			/>
+			<Button
+				hideOrShow={() => { return `${startOfList && "hide"}`; }}
 				onClick={() => changePage("previous", dispatch)}
-			>
-				Previous
-			</button>
+				label={"previous"}
+			/>
+
 		</div>
 	);
 };

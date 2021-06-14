@@ -5,24 +5,27 @@ import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
 
 import "./loginPage.scss";
+import { Button } from "../globals/button/Button";
 
 
 const LoginPage: React.FunctionComponent = () => {
 
 	const [hidden, changeHidden] = useTogglable(true);
 
-	const signupButtonText = hidden ? "Signup" : "Hide Signup";
+	const signupButtonText = (): string => hidden ? "Signup" : "Hide Signup";
 
 	return (
 		<section className="login">
 			<LoginForm />
 			<div className="spacer" />
-			<button onClick={changeHidden}>
-				{signupButtonText}
-			</button>
+			<Button
+				onClick={changeHidden}
+				label={signupButtonText()}
+			/>
 			<SignupForm hidden={hidden} />
 			<div className="spacer" />
 		</section>
 	);
 };
+
 export { LoginPage };
