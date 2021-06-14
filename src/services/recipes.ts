@@ -3,6 +3,7 @@ import axios from "axios";
 import { generateRequest } from "./generateRequest";
 
 export type RecipeType = {
+	id: string,
 	label: string,
 	url: string,
 	img: string,
@@ -18,6 +19,7 @@ const harvestRecipeData = (data: any): RecipeType[] => {//eslint-disable-line
 
 	data.hits.map((recipe: any) => {//eslint-disable-line
 		const harvestedRecipe: RecipeType = {
+			id: recipe.recipe.id,
 			label: recipe.recipe.label,
 			url: recipe.recipe.url,
 			img: recipe.recipe.image,
