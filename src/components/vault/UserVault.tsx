@@ -8,7 +8,6 @@ import { Recipe } from "../home/recipeList/recipe/Recipe";
 const UserVault: React.FunctionComponent = () => {
 
 	const recipes = useSelector<AppState, string[]>(state => state.users.recipes);
-	console.log(recipes);
 	return (
 		<div>
 			<p>test</p>
