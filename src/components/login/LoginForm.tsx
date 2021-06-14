@@ -21,7 +21,7 @@ const LoginForm: React.FunctionComponent = () => {
 				password
 			});
 			const user = response.data;
-			dispatch(SET_USER_DETAILS(user.username, user.token));
+			dispatch(SET_USER_DETAILS(user.username));
 			dispatch(INIT_USER_RECIPES(user.recipes));
 			setNotification({ type: MessageType.message, message: `${user.username} logged in successfully` });
 			return;

@@ -20,7 +20,7 @@ function* saveRecipe(action: ActionWithSavedRecipePayload): Generator<
 	any,
 	any
 > {
-	yield call(recipeService.saveToVault, action.payload.recipeId, action.payload.userValidation);
+	yield call(recipeService.saveToVault, action.payload.recipeId, action.payload.currentUser);
 	yield put({ type: "SAVE_RECIPE", payload: action.payload.recipeId })
 }
 
@@ -29,7 +29,7 @@ function* deleteRecipe(action: ActionWithSavedRecipePayload): Generator<
 	any,
 	any
 > {
-	yield call(recipeService.deleteFromVault, action.payload.recipeId, action.payload.userValidation);
+	yield call(recipeService.deleteFromVault, action.payload.recipeId, action.payload.currentUser);
 	yield put({ type: "DELETE_RECIPE", payload: action.payload.recipeId })
 }
 

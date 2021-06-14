@@ -1,37 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { useTogglable } from "../../../../hooks/useTogglable";
 import { IngredientList } from "../IngredientList";
 import { RecipeType } from "../../../../services/recipes";
 import { SaveButton } from "./SaveButton";
-
-import "./recipe.scss";
-import { useDispatch, useSelector } from "react-redux";
 import { DELETE_USER_RECIPE, SAVE_USER_RECIPE } from "../../../../redux/actions";
 import { AppState } from "../../../../redux/store";
-import { useEffect } from "react";
-import { UserValidation } from "../../../../services/recipes";
+import { MessageType, Notification } from "../../../pageElements/notification/Notification";
+import { useNotification } from "../../../../hooks/useNotification";
+
+import "./recipe.scss";
 
 interface RecipeProps {
 	recipe: RecipeType
 }
 
-
-
 const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
+	const dispatch = useDispatch();
 
 	const { id, label, url, img, calories, source, ingredients, servings } = recipe;
-	const dispatch = useDispatch();
-	//todo - move this up to RecipeList component
+
 	const savedRecipes = useSelector<AppState, string[]>(state => state.users.recipes);
-	const currentUser = useSelector<AppState, UserValidation>(state => state.users.user);
+	const currentUser = useSelector<AppState, string | null>(state => state.users.user.username);
 
 	const [isHidden, setIsHidden] = useTogglable(true);
-	const [isSaved, setIsSaved] = useTogglable(false);
+	const [isSaved, toggleIsSaved] = useTogglable(false);
+	const [notification, setNotification] = useNotification();
 
 	useEffect(() => {
 		if (savedRecipes.includes(id)) {
-			setIsSaved(true);
+			toggleIsSaved(true);
 		}
 	}, []);
 
@@ -39,14 +38,17 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 		event.stopPropagation();
 		if (currentUser) {
 			if (!isSaved) {
-				setIsSaved();
+				toggleIsSaved();
 				dispatch(SAVE_USER_RECIPE(id, currentUser));
+				setNotification({ type: MessageType.message, message: "Recipe saved!" });
 				return;
 			}
-			setIsSaved();
+			toggleIsSaved();
 			dispatch(DELETE_USER_RECIPE(id, currentUser));
+			setNotification({ type: MessageType.message, message: "Recipe deleted!" });
 			return;
 		}
+		setNotification({ type: MessageType.error, message: "Must be logged in to save recipes!" });
 	};
 
 	//todo -find a way to stop event bubbling when clicking on "a" tag - maybe switch to span?
@@ -56,6 +58,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 			onClick={setIsHidden}
 		>
 			<h1>{label}</h1>
+			<Notification notification={notification} />
 			<SaveButton
 				onClick={saveOrDeleteRecipe}
 				isSaved={isSaved}
