@@ -1,13 +1,13 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { RecipeState } from "../../../redux/reducer";
+import { AppState } from "../../../redux/store";
 
 import loadingIcon from "../../../assets/loading-icon.gif";
 import "./loading.scss";
 
 const Loading: React.FunctionComponent = () => {
-	const isLoading = useSelector<RecipeState, boolean>(state => state.isLoading);
+	const isLoading = useSelector<AppState, boolean>(state => state.recipes.isLoading);
 
 	if (isLoading) {
 		return (
