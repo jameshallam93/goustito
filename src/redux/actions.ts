@@ -29,7 +29,17 @@ export type ActionWithSearchPayload = {
 export type ActionWithUserPayload = {
 	type: string,
 	payload: {
-		username: string | null
+		username: string | null,
+		password?: string | null
+	}
+}
+export type ActionWithCredentialsPayload = {
+	type: string,
+	payload: {
+		credentials: {
+			username: string | null,
+			password?: string | null
+		}
 	}
 }
 
@@ -84,6 +94,24 @@ export const CLEAR_USER_DETAILS = (): ActionWithUserPayload => {
 	};
 };
 
+export const ATTEMPT_LOGIN = (credentials: any) => {
+	return {
+		type: "ATTEMPT_LOGIN",
+		payload: {
+			credentials
+		}
+	};
+};
+
+export const LOGIN_ERROR = (error: any) => {
+	return {
+		type: "LOGIN_ERROR",
+		payload: {
+			error
+		}
+	};
+};
+
 export const INIT_USER_RECIPES = (recipeIds: string[]) => {
 	return {
 		type: "INIT_USER_RECIPES",
@@ -129,5 +157,6 @@ export const DELETE_RECIPE = (recipeId: string, currentUser: string): ActionWith
 		}
 	};
 };
+
 export type Actions = ReturnType<typeof SET_RECIPES>
 
