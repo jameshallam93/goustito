@@ -1,14 +1,27 @@
 import { createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
+import { combineReducers } from "redux";
 
-import { recipeReducer } from "./reducer";
+import { recipeReducer, RecipeState } from "./recipeReducer";
+import { userReducer, UserState } from "./userReducer";
 import rootSaga from "./sagas";
+
+export type AppState = {
+	recipes: RecipeState,
+	users: UserState
+}
 
 const sagaMiddleware = createSagaMiddleware();
 
+const rootReducer = combineReducers(
+	{
+		recipes: recipeReducer,
+		users: userReducer
+	}
+);
 
-const store = createStore(recipeReducer, composeWithDevTools(
+const store = createStore(rootReducer, composeWithDevTools(
 	applyMiddleware(sagaMiddleware)
 ));
 
