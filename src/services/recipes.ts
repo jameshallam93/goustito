@@ -15,6 +15,12 @@ export type RecipeType = {
 	servings: number
 }
 
+
+export type UserValidation = {
+	username: string | null,
+	token: string | null
+}
+
 const harvestRecipeData = (data: any): RecipeType[] => {//eslint-disable-line
 
 	const recipes: RecipeType[] = [];
@@ -46,15 +52,15 @@ const recipeService = {
 		return filteredResponse;
 	},
 
-	async saveToVault(recipeId: string, username: string): Promise<AxiosResponse> {
+	async saveToVault(recipeId: string, userValidation: UserValidation): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/saveById`;
-		const response = await axios.post(request, { recipeId, username });
+		const response = await axios.post(request, { recipeId, userValidation });
 		console.log(response);
 		return response.data;
 	},
-	async deleteFromVault(recipeId: string, username: string): Promise<AxiosResponse> {
+	async deleteFromVault(recipeId: string, userValidation: UserValidation): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/deleteById`;
-		const response = await axios.post(request, { recipeId, username });
+		const response = await axios.post(request, { recipeId, userValidation });
 		return response.data;
 	}
 };

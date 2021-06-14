@@ -10,10 +10,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { DELETE_USER_RECIPE, SAVE_USER_RECIPE } from "../../../../redux/actions";
 import { AppState } from "../../../../redux/store";
 import { useEffect } from "react";
+import { UserValidation } from "../../../../services/recipes";
 
 interface RecipeProps {
 	recipe: RecipeType
 }
+
+
 
 const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 
@@ -21,7 +24,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 	const dispatch = useDispatch();
 	//todo - move this up to RecipeList component
 	const savedRecipes = useSelector<AppState, string[]>(state => state.users.recipes);
-	const currentUser = useSelector<AppState, string | null>(state => state.users.user.username);
+	const currentUser = useSelector<AppState, UserValidation>(state => state.users.user);
 
 	const [isHidden, setIsHidden] = useTogglable(true);
 	const [isSaved, setIsSaved] = useTogglable(false);

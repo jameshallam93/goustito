@@ -1,3 +1,5 @@
+import { UserValidation } from "../services/recipes";
+
 
 export type RecipeType = {
 	label: string,
@@ -14,7 +16,7 @@ export type ActionWithSavedRecipePayload = {
 	type: string,
 	payload: {
 		recipeId: string,
-		username: string
+		userValidation: UserValidation
 	}
 }
 export type ActionWithSearchPayload = {
@@ -35,6 +37,7 @@ export type ActionWithUserPayload = {
 export type PlainAction = {
 	type: string;
 }
+
 
 export const GET_RECIPES = (searchTerms: string, mealTypes: string[]): ActionWithSearchPayload => {
 	return {
@@ -93,39 +96,39 @@ export const INIT_USER_RECIPES = (recipeIds: string[]) => {
 	};
 };
 
-export const SAVE_USER_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const SAVE_USER_RECIPE = (recipeId: string, userValidation: UserValidation): ActionWithSavedRecipePayload => {
 	return {
 		type: "SAVE_USER_RECIPE",
 		payload: {
 			recipeId,
-			username
+			userValidation
 		}
 	};
 };
-export const SAVE_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const SAVE_RECIPE = (recipeId: string, userValidation: UserValidation): ActionWithSavedRecipePayload => {
 	return {
 		type: "SAVE_RECIPE",
 		payload: {
 			recipeId,
-			username
+			userValidation
 		}
 	};
 };
-export const DELETE_USER_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const DELETE_USER_RECIPE = (recipeId: string, userValidation: UserValidation): ActionWithSavedRecipePayload => {
 	return {
 		type: "DELETE_USER_RECIPE",
 		payload: {
 			recipeId,
-			username
+			userValidation
 		}
 	};
 };
-export const DELETE_RECIPE = (recipeId: string, username: string): ActionWithSavedRecipePayload => {
+export const DELETE_RECIPE = (recipeId: string, userValidation: UserValidation): ActionWithSavedRecipePayload => {
 	return {
 		type: "DELETE_RECIPE",
 		payload: {
 			recipeId,
-			username
+			userValidation
 		}
 	};
 };
