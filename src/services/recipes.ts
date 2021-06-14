@@ -19,7 +19,7 @@ const harvestRecipeData = (data: any): RecipeType[] => {//eslint-disable-line
 
 	data.hits.map((recipe: any) => {//eslint-disable-line
 		const harvestedRecipe: RecipeType = {
-			id: recipe.recipe.id,
+			id: recipe.recipe.uri,
 			label: recipe.recipe.label,
 			url: recipe.recipe.url,
 			img: recipe.recipe.image,

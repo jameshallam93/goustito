@@ -6,27 +6,44 @@ import { RecipeType } from "../../../../services/recipes";
 import { SaveButton } from "./SaveButton";
 
 import "./recipe.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { SAVE_USER_RECIPE } from "../../../../redux/actions";
+import { AppState } from "../../../../redux/store";
+import { useEffect } from "react";
 
 interface RecipeProps {
 	recipe: RecipeType
 }
 
 const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
+
+	const { id, label, url, img, calories, source, ingredients, servings } = recipe;
 	const dispatch = useDispatch();
+	//todo - move this up to RecipeList component
+	const savedRecipes = useSelector<AppState, string[]>(state => state.users.recipes);
 
 	const [isHidden, setIsHidden] = useTogglable(true);
 	const [isSaved, setIsSaved] = useTogglable(false);
-	//todo -find a way to stop event bubbling when clicking on "a" tag - maybe switch to span?
-	const { id, label, url, img, calories, source, ingredients, servings } = recipe;
+
+	useEffect(() => {
+		if (savedRecipes.includes(id)) {
+			setIsSaved(true);
+		}
+	}, []);
 
 	const saveRecipe = (event: React.MouseEvent) => {
 		event.stopPropagation();
+		if (!isSaved) {
+			setIsSaved();
+			dispatch(SAVE_USER_RECIPE(id));
+			return;
+		}
 		setIsSaved();
-		dispatch(SAVE_USER_RECIPE(id));
+		//dispatch(DELETE_USER_RECIPE(id));
+		return;
 
 	};
+	//todo -find a way to stop event bubbling when clicking on "a" tag - maybe switch to span?
 	return (
 		<section
 			className="recipe"
