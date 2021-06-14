@@ -4,7 +4,7 @@ export type Recipe = {
 	url: string,
 }
 
-type ActionWithRecipesPayload = {
+export type ActionWithRecipesPayload = {
 	type: string,
 	payload: {
 		recipes: Recipe[]
@@ -17,8 +17,15 @@ export type ActionWithSearchPayload = {
 		mealTypes: string[]
 	}
 }
+export type ActionWithUserPayload = {
+	type: string,
+	payload: {
+		username: string | null,
+		token: string | null
+	}
+}
 
-type PlainAction = {
+export type PlainAction = {
 	type: string;
 }
 
@@ -48,6 +55,25 @@ export const SHOW_NEXT_PAGE = (): PlainAction => {
 export const SHOW_PREVIOUS_PAGE = (): PlainAction => {
 	return {
 		type: "SHOW_PREVIOUS_PAGE"
+	};
+};
+
+export const SET_USER_DETAILS = (username: string, token: string): ActionWithUserPayload => {
+	return {
+		type: "SET_USER_DETAILS",
+		payload: {
+			username,
+			token
+		}
+	};
+};
+export const CLEAR_USER_DETAILS = (): ActionWithUserPayload => {
+	return {
+		type: "SET_USER_DETAILS",
+		payload: {
+			username: null,
+			token: null
+		}
 	};
 };
 
