@@ -4,15 +4,15 @@ import "./button.scss";
 type ButtonProps = {
 	label: string,
 	onClick: (any: any) => any,//eslint-disable-line
-	dissappear?: () => any
+	hideOrShow?: () => string
 }
 
-const Button: React.FunctionComponent<ButtonProps> = ({ label, onClick, dissappear }) => {
+const Button: React.FunctionComponent<ButtonProps> = ({ label, onClick, hideOrShow }) => {
 
 	return (
 		<div>
 			<button
-				className={dissappear && dissappear()}
+				className={hideOrShow && hideOrShow()}
 				onClick={onClick}
 			>
 				{label}

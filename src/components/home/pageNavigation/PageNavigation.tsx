@@ -18,12 +18,12 @@ const PageNavigation: React.FunctionComponent = () => {
 	return (
 		<div className="page-navigation">
 			<Button
-				dissappear={() => `${endOfList ? "hide" : !recipesAreLoaded && "hide"}`}
+				hideOrShow={() => `${endOfList ? "hide" : !recipesAreLoaded && "hide"}`}
 				onClick={() => changePage("next", dispatch)}
 				label={"next"}
 			/>
 			<Button
-				dissappear={() => { return `${startOfList && "hide"}`; }}
+				hideOrShow={() => { return `${startOfList && "hide"}`; }}
 				onClick={() => changePage("previous", dispatch)}
 				label={"previous"}
 			/>
