@@ -1,9 +1,10 @@
 import React from "react";
+
 import "./button.scss";
 
 type ButtonProps = {
 	label: string,
-	onClick: (any: any) => any,//eslint-disable-line
+	onClick: () => void,
 	hideOrShow?: () => string
 }
 

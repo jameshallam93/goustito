@@ -2,7 +2,7 @@ import React from "react";
 
 import "./recipeList.scss";
 
-const InfoBar: React.FunctionComponent = () => { //eslint-disable-line
+const InfoBar: React.FunctionComponent = () => {
 	return (
 		<div className="info">
 			<h1>Click the star to save a recipe to your bank</h1>

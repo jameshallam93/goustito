@@ -5,6 +5,7 @@ import { put, takeLatest, all, call } from "redux-saga/effects";
 import { loginService } from "../services/login";
 import { recipeService } from "../services/recipes";
 import { ActionWithSavedRecipeIdPayload, ActionWithSavedRecipePayload, ActionWithSearchPayload } from "./actions/actions";
+import { getCurrentTime } from "../utils/getCurrentTime/getCurrentTime";
 
 function* fetchRecipes(action: ActionWithSearchPayload): Generator<
 	any,
@@ -50,7 +51,7 @@ function* deleteRecipe(action: ActionWithSavedRecipeIdPayload): Generator<
 	);
 	yield put({
 		type: "DELETE_RECIPE",
-		payload: action.payload.recipeId
+		payload: { recipeId: action.payload.recipeId }
 	})
 }
 
@@ -80,13 +81,19 @@ function* attempt_Login(action: any): Generator<any, void, void> {
 		})
 	}
 }
+
 function* validateSession(action: any): Generator<any, void, void> {
-	if (action.payload.sessionExpired) {
-		window.alert("Session has expired - please login again");
-		localStorage.removeItem("token");
-		localStorage.removeItem("username");
-		yield put({ type: "CLEAR_USER_DETAILS" })
-		return;
+	const currentTime = getCurrentTime();
+	if (action.payload.sessionExpiry) {
+		if (currentTime > action.payload.sessionExpiry) {
+			{
+				localStorage.removeItem("token");
+				localStorage.removeItem("username");
+				yield put({ type: "CLEAR_USER_DETAILS" })
+				window.alert("Session has expired - please login again");
+				return;
+			}
+		}
 	}
 	if (action.payload.loggedUser) {
 		yield put({

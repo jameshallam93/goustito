@@ -51,7 +51,7 @@ export const SHOW_PREVIOUS_PAGE = (): PlainAction => {
 
 
 
-export const INIT_USER_RECIPES = (recipes: RecipeType[]) => {
+export const INIT_USER_RECIPES = (recipes: RecipeType[]): ActionWithRecipesPayload => {
 	return {
 		type: "INIT_USER_RECIPES",
 		payload: {

@@ -4,7 +4,7 @@ import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
 import { signUpService } from "../../services/signUp";
-import { generateCredentials } from "../../auth/generateCredentials";
+import { generateCredentials } from "../../utils/auth/generateCredentials";
 
 
 interface SignupFormProps {

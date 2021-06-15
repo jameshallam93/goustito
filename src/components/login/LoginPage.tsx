@@ -3,9 +3,10 @@ import React from "react";
 import { useTogglable } from "../../hooks/useTogglable";
 import { LoginForm } from "./LoginForm";
 import { SignupForm } from "./SignupForm";
+import { Button } from "../globals/button/Button";
 
 import "./loginPage.scss";
-import { Button } from "../globals/button/Button";
+
 
 
 const LoginPage: React.FunctionComponent = () => {

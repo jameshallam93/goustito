@@ -15,4 +15,5 @@ const Home: React.FunctionComponent = () => {
 		</div>
 	);
 };
+
 export { Home };

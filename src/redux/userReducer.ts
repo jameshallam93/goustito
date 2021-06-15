@@ -18,7 +18,7 @@ const initialState: UserState = {
 	}
 };
 
-export const userReducer = (state: UserState = initialState, action: any): UserState => {
+export const userReducer = (state: UserState = initialState, action: any): UserState => {//eslint-disable-line
 	switch (action.type) {
 	case "SET_USER_DETAILS":
 		return {
@@ -56,7 +56,7 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 			]
 		};
 	case "DELETE_RECIPE":
-			const newRecipes = state.recipes.filter(recipe => recipe !== action.payload.recipeId); //eslint-disable-line
+			const newRecipes = state.recipes.filter(recipe => recipe.id !== action.payload.recipeId); //eslint-disable-line
 		return {
 			...state,
 			recipes: [

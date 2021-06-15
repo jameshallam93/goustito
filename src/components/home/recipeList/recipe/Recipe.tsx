@@ -25,7 +25,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 	const currentUser = useSelector<AppState, string | null>(state => state.users.user.username);
 
 	const [isHidden, setIsHidden] = useTogglable(true);
-	const [isSaved, toggleIsSaved] = useTogglable(false);
+	const [recipeIsSaved, toggleIsSaved] = useTogglable(false);
 	const [notification, setNotification] = useNotification();
 
 	useEffect(() => {
@@ -37,22 +37,22 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 		});
 	}, []);
 
-
 	const saveOrDeleteRecipe = (event: React.MouseEvent) => {
 		event.stopPropagation();
-		if (currentUser) {
-			if (!isSaved) {
-				toggleIsSaved();
-				dispatch(SAVE_USER_RECIPE(recipe, currentUser));
-				setNotification({ type: MessageType.message, message: "Recipe saved!" });
-				return;
-			}
+		if (!currentUser) {
+			setNotification({ type: MessageType.error, message: "Must be logged in to save recipes!" });
+			return;
+		}
+		if (recipeIsSaved) {
 			toggleIsSaved();
 			dispatch(DELETE_USER_RECIPE(id, currentUser));
 			setNotification({ type: MessageType.message, message: "Recipe deleted!" });
 			return;
 		}
-		setNotification({ type: MessageType.error, message: "Must be logged in to save recipes!" });
+		toggleIsSaved();
+		dispatch(SAVE_USER_RECIPE(recipe, currentUser));
+		setNotification({ type: MessageType.message, message: "Recipe saved!" });
+		return;
 	};
 
 	//todo -find a way to stop event bubbling when clicking on "a" tag - maybe switch to span?
@@ -65,7 +65,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 			<Notification notification={notification} />
 			<SaveButton
 				onClick={saveOrDeleteRecipe}
-				isSaved={isSaved}
+				isSaved={recipeIsSaved}
 			/>
 
 			<div className={`${isHidden && "hide"}`}>

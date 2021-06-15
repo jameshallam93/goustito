@@ -1,6 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 import { generateApiRequest } from "./generateApiRequest";
+import { harvestRecipeData } from "../utils/harvestRecipeData/harvestRecipeData";
 
 const baseUrl = "http://localhost:3001";
 
@@ -15,31 +16,10 @@ export type RecipeType = {
 	servings: number
 }
 
-
 export type UserValidation = {
 	username: string | null,
 	token: string | null
 }
-
-const harvestRecipeData = (data: any): RecipeType[] => {//eslint-disable-line
-
-	const recipes: RecipeType[] = [];
-
-	data.hits.map((recipe: any) => {//eslint-disable-line
-		const harvestedRecipe: RecipeType = {
-			id: recipe.recipe.uri,
-			label: recipe.recipe.label,
-			url: recipe.recipe.url,
-			img: recipe.recipe.image,
-			calories: recipe.recipe.calories,
-			source: recipe.recipe.source,
-			ingredients: recipe.recipe.ingredientLines,
-			servings: recipe.recipe.yield
-		};
-		recipes.push(harvestedRecipe);
-	});
-	return recipes;
-};
 
 const recipeService = {
 
@@ -63,7 +43,7 @@ const recipeService = {
 		return response.data;
 	},
 
-	async saveToVault(recipe: RecipeType | any, currentUser: string): Promise<AxiosResponse> {
+	async saveToVault(recipe: RecipeType, currentUser: string): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/saveById`;
 		const token = localStorage.getItem("token");
 
@@ -78,6 +58,7 @@ const recipeService = {
 		);
 		return response.data;
 	},
+
 	async deleteFromVault(recipeId: string, currentUser: string): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/deleteById`;
 		const token = localStorage.getItem("token");

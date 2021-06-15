@@ -17,7 +17,7 @@ const RecipeList: React.FunctionComponent = () => {
 
 	const [currentRecipes, setCurrentRecipes] = useState<RecipeType[]>([]);
 
-	const allRecipes: any = useSelector<AppState>((state) => state.recipes.recipes[0]); //eslint-disable-line
+	const allRecipes = useSelector<AppState, any>((state) => state.recipes.recipes[0]); //eslint-disable-line
 	const resultsToShow = useSelector<AppState, ResultsShown>((state) => state.recipes.resultsShown);
 
 	useEffect(() => {
@@ -35,7 +35,7 @@ const RecipeList: React.FunctionComponent = () => {
 			<div />
 			<ul>
 				{
-					currentRecipes && currentRecipes.map((recipe: any) => { //eslint-disable-line
+					currentRecipes && currentRecipes.map((recipe: RecipeType) => {
 						return (
 							<li key={recipe.id}>
 								<Recipe
