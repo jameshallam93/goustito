@@ -66,8 +66,8 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 
 			<div className={`${isHidden && "hide"}`}>
 				<IngredientList ingredients={ingredients} />
-				<p>Calories: {Math.floor(calories)}</p>
 				<p>Servings: {servings} </p>
+				<p>Calories per serving: {Math.floor(calories / servings)}</p>
 			</div>
 
 			<img src={img} alt="food"></img>
