@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Home } from "./components/home/Home";
@@ -7,9 +7,20 @@ import { Header } from "./components/pageElements/header/Header";
 import { UserVault } from "./components/vault/UserVault";
 
 import "./app.scss";
+import { useDispatch } from "react-redux";
+import { VALIDATE_SESSION_DETAILS } from "./redux/actions/actions";
 
 
 const App: React.FunctionComponent = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		const loggedUser = window.localStorage.getItem("username");
+		const sessionExpired: boolean = (
+			Number(localStorage.getItem("token-expiry")) < new Date().getTime()
+		);
+		dispatch(VALIDATE_SESSION_DETAILS(loggedUser, sessionExpired));
+	}, []);
 
 	return (
 		<div className="App">

@@ -4,7 +4,7 @@ import { put, takeLatest, all, call } from "redux-saga/effects";
 
 import { loginService } from "../services/login";
 import { recipeService } from "../services/recipes";
-import { ActionWithSavedRecipePayload, ActionWithSearchPayload } from "./actions/actions";
+import { ActionWithSavedRecipePayload, ActionWithSearchPayload, CLEAR_USER_DETAILS } from "./actions/actions";
 
 function* fetchRecipes(action: ActionWithSearchPayload): Generator<
 	any,
@@ -79,6 +79,32 @@ function* attempt_Login(action: any): Generator<any, void, void> {
 		})
 	}
 }
+function* validateSession(action: any): Generator<any, void, void> {
+	if (action.payload.sessionExpired) {
+		window.alert("Session has expired - please login again");
+		localStorage.removeItem("token");
+		localStorage.removeItem("username");
+		yield put({ type: "CLEAR_USER_DETAILS" })
+	}
+	if (action.payload.loggedUser) {
+		yield put({
+			type: "SET_USER_DETAILS",
+			payload: { username: action.payload.loggedUser }
+		})
+		const recipeIds = yield call(
+			recipeService.fetchUserRecipes,
+			action.payload.loggedUser
+		);
+		yield put({
+			type: "INIT_USER_RECIPES",
+			payload: { recipeIds: recipeIds }
+		});
+	}
+}
+
+function* sessionWatcher() {
+	yield takeLatest("VALIDATE_SESSION_DETAILS", validateSession)
+}
 
 function* recipeWatcher() {
 	yield takeLatest("GET_RECIPES", fetchRecipes);
@@ -97,6 +123,7 @@ export default function* rootSaga() {
 	yield all([
 		recipeWatcher(),
 		saveOrRemoveRecipeWatcher(),
-		loginWatcher()
+		loginWatcher(),
+		sessionWatcher()
 	]);
 }

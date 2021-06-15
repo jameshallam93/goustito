@@ -13,8 +13,10 @@ export const loginService = {
 			const response = await axios.post(request, credentials);
 			//todo - refactor below
 			const token = response.data.token;
+			const expiry = response.data.expiry;
 			const username = response.data.username;
 			localStorage.setItem("token", token);
+			localStorage.setItem("token-expiry", expiry);
 			localStorage.setItem("username", username);
 			delete response.data.token;
 			return response.data;
