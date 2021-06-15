@@ -5,7 +5,7 @@ import { useTogglable } from "../../../../hooks/useTogglable";
 import { IngredientList } from "../IngredientList";
 import { RecipeType } from "../../../../services/recipes";
 import { SaveButton } from "./SaveButton";
-import { DELETE_USER_RECIPE, SAVE_USER_RECIPE } from "../../../../redux/actions";
+import { DELETE_USER_RECIPE, SAVE_USER_RECIPE } from "../../../../redux/actions/actions";
 import { AppState } from "../../../../redux/store";
 import { MessageType, Notification } from "../../../pageElements/notification/Notification";
 import { useNotification } from "../../../../hooks/useNotification";

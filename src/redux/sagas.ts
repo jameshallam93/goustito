@@ -4,7 +4,7 @@ import { put, takeLatest, all, call } from "redux-saga/effects";
 
 import { loginService } from "../services/login";
 import { recipeService } from "../services/recipes";
-import { ActionWithSavedRecipePayload, ActionWithSearchPayload } from "./actions";
+import { ActionWithSavedRecipePayload, ActionWithSearchPayload } from "./actions/actions";
 
 function* fetchRecipes(action: ActionWithSearchPayload): Generator<
 	any,

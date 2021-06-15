@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { useField } from "../../../hooks/useField";
-import { GET_RECIPES } from "../../../redux/actions";
+import { GET_RECIPES } from "../../../redux/actions/actions";
 import { CheckboxArray } from "../../globals/checkbox/CheckboxArray";
 import { MEAL_TYPES } from "../../../constants";
 import { InputButton } from "../../globals/button/InputButton";

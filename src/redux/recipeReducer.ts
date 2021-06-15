@@ -1,4 +1,4 @@
-import { Actions } from "./actions";
+import { Actions } from "./actions/actions";
 import { RESULTS_PER_PAGE } from "../constants";
 
 export type RecipeState = {
