@@ -41,3 +41,13 @@ export const LOGIN_ERROR = (error: any) => {
 		}
 	};
 };
+
+export const VALIDATE_SESSION_DETAILS = (loggedUser: string | null, sessionExpired: boolean) => {
+	return {
+		type: "VALIDATE_SESSION_DETAILS",
+		payload: {
+			loggedUser,
+			sessionExpired
+		}
+	};
+};

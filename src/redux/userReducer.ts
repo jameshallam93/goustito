@@ -37,7 +37,7 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 		return {
 			...state,
 			recipes: [
-				...action.payload.recipes
+				...action.payload.recipeIds
 			]
 		};
 	case "SAVE_RECIPE":

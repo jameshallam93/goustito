@@ -51,6 +51,18 @@ const recipeService = {
 		return filteredResponse;
 	},
 
+	async fetchUserRecipes(currentUser: string): Promise<string[]> {
+		const request = `${baseUrl}/api/recipe/userRecipes/${currentUser}`;
+		const token = localStorage.getItem("token");
+
+		const response = await axios.get(request, {
+			headers: {
+				"authorization": `Bearer ${token}`
+			}
+		});
+		return response.data;
+	},
+
 	async saveToVault(recipeId: string, currentUser: string): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/saveById`;
 		const token = localStorage.getItem("token");
