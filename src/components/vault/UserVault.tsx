@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RecipeType } from "../../redux/actions";
+import { RecipeType } from "../../redux/actions/actions";
 import { AppState } from "../../redux/store";
 import { Recipe } from "../home/recipeList/recipe/Recipe";
 

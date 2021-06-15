@@ -1,4 +1,4 @@
-import { SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE } from "../../../redux/actions";
+import { SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE } from "../../../redux/actions/actions";
 
 export const changePage = (direction: string, dispatch: React.Dispatch<any>): void => { //eslint-disable-line
 	if (direction === "next") {

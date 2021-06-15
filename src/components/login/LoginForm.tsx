@@ -4,7 +4,7 @@ import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
 import { useDispatch, useSelector } from "react-redux";
-import { ATTEMPT_LOGIN } from "../../redux/actions";
+import { ATTEMPT_LOGIN } from "../../redux/actions/actions";
 import { AppState } from "../../redux/store";
 import { useEffect } from "react";
 
