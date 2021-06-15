@@ -51,11 +51,17 @@ export const SHOW_PREVIOUS_PAGE = (): PlainAction => {
 
 
 
-export const INIT_USER_RECIPES = (recipeIds: string[]) => {
+export const INIT_USER_RECIPES = (recipes: RecipeType[]) => {
 	return {
 		type: "INIT_USER_RECIPES",
 		payload: {
-			recipeIds
+			recipes
 		}
+	};
+};
+
+export const CLEAR_USER_RECIPES = (): PlainAction => {
+	return {
+		type: "CLEAR_USER_RECIPES"
 	};
 };

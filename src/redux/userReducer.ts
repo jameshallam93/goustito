@@ -38,8 +38,14 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 		return {
 			...state,
 			recipes: [
-				...action.payload.recipeIds
+				...action.payload.recipes
 			]
+		};
+
+	case "CLEAR_USER_RECIPES":
+		return {
+			...state,
+			recipes: []
 		};
 	case "SAVE_RECIPE":
 		return {
