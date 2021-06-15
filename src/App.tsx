@@ -16,11 +16,10 @@ const App: React.FunctionComponent = () => {
 
 	useEffect(() => {
 		const loggedUser = window.localStorage.getItem("username");
-
-		const sessionExpired: boolean = (
-			Number(localStorage.getItem("token-expiry")) < new Date().getTime()
+		const sessionExpiry = (
+			Number(localStorage.getItem("token-expiry"))
 		);
-		dispatch(VALIDATE_SESSION_DETAILS(loggedUser, sessionExpired));
+		dispatch(VALIDATE_SESSION_DETAILS(loggedUser, sessionExpiry));
 	}, []);
 
 	return (

@@ -1,13 +1,13 @@
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
-import { useDispatch, useSelector } from "react-redux";
 import { ATTEMPT_LOGIN } from "../../redux/actions/actions";
 import { AppState } from "../../redux/store";
-import { useEffect } from "react";
-import { generateCredentials } from "../../auth/generateCredentials";
+import { generateCredentials } from "../../utils/auth/generateCredentials";
 
 const LoginForm: React.FunctionComponent = () => {
 
@@ -37,6 +37,7 @@ const LoginForm: React.FunctionComponent = () => {
 		event.preventDefault();
 		const credentials = generateCredentials(username, password);
 		dispatch(ATTEMPT_LOGIN(credentials));
+
 		return;
 	};
 
@@ -52,6 +53,5 @@ const LoginForm: React.FunctionComponent = () => {
 
 	);
 };
-
 
 export { LoginForm };

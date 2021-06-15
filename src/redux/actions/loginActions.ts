@@ -1,10 +1,34 @@
-import { CredentialsType } from "../../auth/generateCredentials";
+import { MessageType } from "../../components/pageElements/notification/Notification";
+import { CredentialsType } from "../../utils/auth/generateCredentials";
 
 export type ActionWithUserPayload = {
 	type: string,
 	payload: {
 		username: string | null,
 		password?: string | null
+	}
+}
+export type ActionWithCredentialsPayload = {
+	type: string,
+	payload: {
+		credentials: CredentialsType
+	}
+}
+
+export type ActionWithErrorPayload = {
+	type: string,
+	payload: {
+		error: {
+			type: MessageType.error
+			message: string
+		}
+	}
+}
+export type ActionWithSessionValidationPayload = {
+	type: string,
+	payload: {
+		loggedUser: string | null,
+		sessionExpiry: number
 	}
 }
 
@@ -25,7 +49,7 @@ export const CLEAR_USER_DETAILS = (): ActionWithUserPayload => {
 	};
 };
 
-export const ATTEMPT_LOGIN = (credentials: CredentialsType) => {
+export const ATTEMPT_LOGIN = (credentials: CredentialsType): ActionWithCredentialsPayload => {
 	return {
 		type: "ATTEMPT_LOGIN",
 		payload: {
@@ -34,7 +58,7 @@ export const ATTEMPT_LOGIN = (credentials: CredentialsType) => {
 	};
 };
 
-export const LOGIN_ERROR = (error: any) => {
+export const LOGIN_ERROR = (error: { type: MessageType.error, message: string }): ActionWithErrorPayload => {
 	return {
 		type: "LOGIN_ERROR",
 		payload: {
@@ -43,12 +67,12 @@ export const LOGIN_ERROR = (error: any) => {
 	};
 };
 
-export const VALIDATE_SESSION_DETAILS = (loggedUser: string | null, sessionExpired: boolean) => {
+export const VALIDATE_SESSION_DETAILS = (loggedUser: string | null, sessionExpiry: number): ActionWithSessionValidationPayload => {
 	return {
 		type: "VALIDATE_SESSION_DETAILS",
 		payload: {
 			loggedUser,
-			sessionExpired
+			sessionExpiry
 		}
 	};
 };

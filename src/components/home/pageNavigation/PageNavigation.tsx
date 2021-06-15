@@ -7,7 +7,6 @@ import { Button } from "../../globals/button/Button";
 
 import "./pageNavigation.scss";
 
-
 const PageNavigation: React.FunctionComponent = () => {
 
 	const dispatch = useDispatch();
@@ -32,4 +31,5 @@ const PageNavigation: React.FunctionComponent = () => {
 		</div>
 	);
 };
+
 export { PageNavigation };
