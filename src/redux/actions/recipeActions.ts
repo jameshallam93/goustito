@@ -1,9 +1,4 @@
-
-export type RecipeType = {
-	label: string,
-	url: string,
-}
-
+import { RecipeType } from "../../services/recipes";
 
 export type PlainAction = {
 	type: string;

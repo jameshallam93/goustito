@@ -4,7 +4,7 @@ import { put, takeLatest, all, call } from "redux-saga/effects";
 
 import { loginService } from "../services/login";
 import { recipeService } from "../services/recipes";
-import { ActionWithSavedRecipePayload, ActionWithSearchPayload, CLEAR_USER_DETAILS } from "./actions/actions";
+import { ActionWithSavedRecipeIdPayload, ActionWithSavedRecipePayload, ActionWithSearchPayload } from "./actions/actions";
 
 function* fetchRecipes(action: ActionWithSearchPayload): Generator<
 	any,
@@ -29,16 +29,16 @@ function* saveRecipe(action: ActionWithSavedRecipePayload): Generator<
 > {
 	yield call(
 		recipeService.saveToVault,
-		action.payload.recipeId,
+		action.payload.recipe,
 		action.payload.currentUser
 	);
 	yield put({
 		type: "SAVE_RECIPE",
-		payload: action.payload.recipeId
+		payload: action.payload.recipe
 	})
 }
 
-function* deleteRecipe(action: ActionWithSavedRecipePayload): Generator<
+function* deleteRecipe(action: ActionWithSavedRecipeIdPayload): Generator<
 	any,
 	void,
 	void

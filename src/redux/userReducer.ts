@@ -1,9 +1,10 @@
+import { RecipeType } from "../services/recipes";
 
 export type UserState = {
 	user: {
 		username: string | null
 	},
-	recipes: string[],
+	recipes: RecipeType[],
 	loginError: { error: string | null }
 }
 
