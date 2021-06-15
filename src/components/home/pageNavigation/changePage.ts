@@ -1,11 +1,11 @@
-import { SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE } from "../../../redux/actions/actions";
+import { NAVIGATION_ACTIONS } from "../../../redux/actions/actions";
 
 export const changePage = (direction: string, dispatch: React.Dispatch<any>): void => { //eslint-disable-line
 	if (direction === "next") {
-		dispatch(SHOW_NEXT_PAGE());
+		dispatch(NAVIGATION_ACTIONS.SHOW_NEXT_PAGE());
 	}
 	if (direction === "previous") {
-		dispatch(SHOW_PREVIOUS_PAGE());
+		dispatch(NAVIGATION_ACTIONS.SHOW_PREVIOUS_PAGE());
 	}
 	window.scrollTo({
 		top: 0,

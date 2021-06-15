@@ -4,7 +4,8 @@ import { UserDetailsForm } from "./UserDetailsForm/UserDetailsForm";
 import { Notification, MessageType } from "../pageElements/notification/Notification";
 import { useNotification } from "../../hooks/useNotification";
 import { signUpService } from "../../services/signUp";
-import { Credentials } from "../../services/login";
+import { generateCredentials } from "../../auth/generateCredentials";
+
 
 interface SignupFormProps {
 	hidden: boolean
@@ -21,10 +22,8 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = ({ hidden }) => {
 	) => {
 		event.preventDefault();
 		try {
-			const credentials: Credentials = {
-				username,
-				password
-			};
+
+			const credentials = generateCredentials(username, password);
 			const response = await signUpService.createNewUser(credentials);
 			setNotification({ type: MessageType.message, message: `${response.data.username} signed up successfully!` });
 		} catch (e) {
@@ -35,7 +34,9 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = ({ hidden }) => {
 	return (
 		<div className={`sign-up-form ${hidden && "hide"}`}>
 			<Notification notification={notification} />
-			<p>N.B. This app is designed for demo purposes only - passwords are hashed, but it is STRONGLY recommended not to use existing passwords</p>
+			<p>
+				N.B. This app is designed for demo purposes only - passwords are hashed, but it is STRONGLY recommended not to use existing passwords
+			</p>
 			<UserDetailsForm
 				heading="Signup"
 				handleSubmit={handleSignup}

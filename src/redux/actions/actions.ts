@@ -2,7 +2,13 @@ import type { RecipeType, PlainAction, ActionWithRecipesPayload, ActionWithSearc
 export type { RecipeType, PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload };
 
 import { GET_RECIPES, SET_RECIPES, SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE, INIT_USER_RECIPES } from "./recipeActions";
-export { GET_RECIPES, SET_RECIPES, SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE, INIT_USER_RECIPES };
+export { GET_RECIPES, SET_RECIPES, INIT_USER_RECIPES };
+
+//for testing
+export const NAVIGATION_ACTIONS = {
+	SHOW_NEXT_PAGE,
+	SHOW_PREVIOUS_PAGE
+};
 
 
 import type { ActionWithSavedRecipePayload } from "./saveAndDeleteActions";
