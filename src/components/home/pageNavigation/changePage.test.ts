@@ -1,13 +1,13 @@
 import "@testing-library/jest-dom/extend-expect";
 import * as reactRedux from "react-redux";
 
-import * as actions from "../../../redux/actions";
+import { NAVIGATION_ACTIONS } from "../../../redux/actions/actions";
 import { changePage } from "./changePage";
 
 const mockDispatch = jest.fn();
 const mockUseDispatch = jest.spyOn(reactRedux, "useDispatch");//eslint-disable-line
-const nextPageSpy = jest.spyOn(actions, "SHOW_NEXT_PAGE");
-const prevPageSpy = jest.spyOn(actions, "SHOW_PREVIOUS_PAGE");
+const nextPageSpy = jest.spyOn(NAVIGATION_ACTIONS, "SHOW_NEXT_PAGE");
+const prevPageSpy = jest.spyOn(NAVIGATION_ACTIONS, "SHOW_PREVIOUS_PAGE");
 
 //required to stop error messages in jest output.
 window.scrollTo = jest.fn();

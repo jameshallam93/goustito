@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { ATTEMPT_LOGIN } from "../../redux/actions/actions";
 import { AppState } from "../../redux/store";
 import { useEffect } from "react";
+import { generateCredentials } from "../../auth/generateCredentials";
 
 const LoginForm: React.FunctionComponent = () => {
 
@@ -34,7 +35,8 @@ const LoginForm: React.FunctionComponent = () => {
 
 	const handleLogin = async (event: React.FormEvent<HTMLFormElement>, username: string, password: string) => {
 		event.preventDefault();
-		dispatch(ATTEMPT_LOGIN({ username, password }));
+		const credentials = generateCredentials(username, password);
+		dispatch(ATTEMPT_LOGIN(credentials));
 		return;
 	};
 
