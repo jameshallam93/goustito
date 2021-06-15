@@ -1,3 +1,4 @@
+import { CredentialsType } from "../../auth/generateCredentials";
 
 export type ActionWithUserPayload = {
 	type: string,
@@ -24,7 +25,7 @@ export const CLEAR_USER_DETAILS = (): ActionWithUserPayload => {
 	};
 };
 
-export const ATTEMPT_LOGIN = (credentials: any) => {
+export const ATTEMPT_LOGIN = (credentials: CredentialsType) => {
 	return {
 		type: "ATTEMPT_LOGIN",
 		payload: {

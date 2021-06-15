@@ -73,6 +73,7 @@ function* attempt_Login(action: any): Generator<any, void, void> {
 			}
 		})
 	} catch (e) {
+		console.log(e);
 		yield put({
 			type: "LOGIN_ERROR",
 			payload: { error: e.e.response.data }
@@ -92,13 +93,13 @@ function* validateSession(action: any): Generator<any, void, void> {
 			type: "SET_USER_DETAILS",
 			payload: { username: action.payload.loggedUser }
 		})
-		const recipeIds = yield call(
+		const recipes = yield call(
 			recipeService.fetchUserRecipes,
 			action.payload.loggedUser
 		);
 		yield put({
 			type: "INIT_USER_RECIPES",
-			payload: { recipeIds: recipeIds }
+			payload: { recipes: recipes }
 		});
 	}
 }
