@@ -1,5 +1,5 @@
-import type { RecipeType, PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload } from "./recipeActions";
-export type { RecipeType, PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload };
+import type { PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload } from "./recipeActions";
+export type { PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload };
 
 import { GET_RECIPES, SET_RECIPES, SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE, INIT_USER_RECIPES } from "./recipeActions";
 export { GET_RECIPES, SET_RECIPES, INIT_USER_RECIPES };
@@ -11,8 +11,8 @@ export const NAVIGATION_ACTIONS = {
 };
 
 
-import type { ActionWithSavedRecipePayload } from "./saveAndDeleteActions";
-export type { ActionWithSavedRecipePayload };
+import type { ActionWithSavedRecipeIdPayload, ActionWithSavedRecipePayload } from "./saveAndDeleteActions";
+export type { ActionWithSavedRecipeIdPayload, ActionWithSavedRecipePayload };
 
 import { SAVE_RECIPE, SAVE_USER_RECIPE, DELETE_RECIPE, DELETE_USER_RECIPE } from "./saveAndDeleteActions";
 export { SAVE_RECIPE, SAVE_USER_RECIPE, DELETE_RECIPE, DELETE_USER_RECIPE };

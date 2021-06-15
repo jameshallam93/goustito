@@ -21,7 +21,7 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 
 	const { id, label, url, img, calories, source, ingredients, servings } = recipe;
 
-	const savedRecipes = useSelector<AppState, string[]>(state => state.users.recipes);
+	const savedRecipes = useSelector<AppState, RecipeType[]>(state => state.users.recipes);
 	const currentUser = useSelector<AppState, string | null>(state => state.users.user.username);
 
 	const [isHidden, setIsHidden] = useTogglable(true);
@@ -29,17 +29,21 @@ const Recipe: React.FunctionComponent<RecipeProps> = ({ recipe }) => {
 	const [notification, setNotification] = useNotification();
 
 	useEffect(() => {
-		if (savedRecipes.includes(id)) {
-			toggleIsSaved(true);
-		}
+		savedRecipes.forEach(recipe => {
+			if (recipe.id === id) {
+				toggleIsSaved(true);
+				return;
+			}
+		});
 	}, []);
+
 
 	const saveOrDeleteRecipe = (event: React.MouseEvent) => {
 		event.stopPropagation();
 		if (currentUser) {
 			if (!isSaved) {
 				toggleIsSaved();
-				dispatch(SAVE_USER_RECIPE(id, currentUser));
+				dispatch(SAVE_USER_RECIPE(recipe, currentUser));
 				setNotification({ type: MessageType.message, message: "Recipe saved!" });
 				return;
 			}

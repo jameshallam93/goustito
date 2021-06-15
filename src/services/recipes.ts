@@ -63,13 +63,13 @@ const recipeService = {
 		return response.data;
 	},
 
-	async saveToVault(recipeId: string, currentUser: string): Promise<AxiosResponse> {
+	async saveToVault(recipe: RecipeType | any, currentUser: string): Promise<AxiosResponse> {
 		const request = `${baseUrl}/api/recipe/saveById`;
 		const token = localStorage.getItem("token");
 
 		const response = await axios.post(
 			request,
-			{ recipeId, currentUser },
+			{ recipe, currentUser },
 			{
 				headers: {
 					"authorization": `Bearer ${token}`

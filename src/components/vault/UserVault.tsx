@@ -1,18 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RecipeType } from "../../redux/actions/actions";
 import { AppState } from "../../redux/store";
-import { Recipe } from "../home/recipeList/recipe/Recipe";
+import { RecipeType } from "../../services/recipes";
 
 
 const UserVault: React.FunctionComponent = () => {
 
-	const recipes = useSelector<AppState, string[]>(state => state.users.recipes);
+	const recipes = useSelector<AppState, RecipeType[]>(state => state.users.recipes);
 	return (
 		<div>
 			<p>test</p>
 			{recipes.map(recipe => {
-				return (<p key={recipe}>{recipe}</p>);
+				return (<p key={recipe.label}>{recipe.label}</p>);
 			})}
 		</div>
 	);

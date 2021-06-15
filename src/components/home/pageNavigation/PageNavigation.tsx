@@ -14,7 +14,7 @@ const PageNavigation: React.FunctionComponent = () => {
 
 	const startOfList = useSelector<AppState, boolean>((state) => state.recipes.resultsShown.from === 0);
 	const endOfList = useSelector<AppState, boolean>((state) => state.recipes.resultsShown.to === 100);
-	const recipesAreLoaded = useSelector<AppState, boolean>((state) => state.recipes.recipes[0]?.length > 0);
+	const recipesAreLoaded = useSelector<AppState, boolean>((state) => state.recipes.recipes?.length > 0);
 
 	return (
 		<div className="page-navigation">
