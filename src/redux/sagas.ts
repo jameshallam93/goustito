@@ -85,6 +85,7 @@ function* validateSession(action: any): Generator<any, void, void> {
 		localStorage.removeItem("token");
 		localStorage.removeItem("username");
 		yield put({ type: "CLEAR_USER_DETAILS" })
+		return;
 	}
 	if (action.payload.loggedUser) {
 		yield put({

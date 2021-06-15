@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import { Home } from "./components/home/Home";
 import { LoginPage } from "./components/login/LoginPage";
 import { Header } from "./components/pageElements/header/Header";
 import { UserVault } from "./components/vault/UserVault";
+import { VALIDATE_SESSION_DETAILS } from "./redux/actions/actions";
 
 import "./app.scss";
-import { useDispatch } from "react-redux";
-import { VALIDATE_SESSION_DETAILS } from "./redux/actions/actions";
 
 
 const App: React.FunctionComponent = () => {
@@ -16,6 +16,7 @@ const App: React.FunctionComponent = () => {
 
 	useEffect(() => {
 		const loggedUser = window.localStorage.getItem("username");
+
 		const sessionExpired: boolean = (
 			Number(localStorage.getItem("token-expiry")) < new Date().getTime()
 		);
