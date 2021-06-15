@@ -8,7 +8,10 @@ export type SaveButtonProps = {
 
 const SaveButton: React.FunctionComponent<SaveButtonProps> = ({ onClick, isSaved }) => {
 	return (
-		<div onClick={onClick}>
+		<div
+			onClick={onClick}
+			className="save-button-div"
+		>
 			{
 				isSaved ?
 					<AiFillStar />
