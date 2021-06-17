@@ -8,7 +8,7 @@ export type UserState = {
 	loginError: { error: string | null }
 }
 
-const initialState: UserState = {
+export const initialState: UserState = {
 	user: {
 		username: null
 	},
@@ -52,7 +52,7 @@ export const userReducer = (state: UserState = initialState, action: any): UserS
 			...state,
 			recipes: [
 				...state.recipes,
-				action.payload
+				action.payload.recipe
 			]
 		};
 	case "DELETE_RECIPE":

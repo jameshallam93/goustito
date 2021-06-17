@@ -5,7 +5,7 @@ import { combineReducers } from "redux";
 
 import { recipeReducer, RecipeState } from "./recipeReducer";
 import { userReducer, UserState } from "./userReducer";
-import rootSaga from "./sagas";
+import rootSaga from "./sagas/sagas";
 
 export type AppState = {
 	recipes: RecipeState,

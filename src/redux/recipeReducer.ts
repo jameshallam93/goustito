@@ -11,7 +11,7 @@ export type RecipeState = {
 	isLoading: boolean
 }
 
-const initialState = {
+export const initialState = {
 	recipes: [],
 	resultsShown: {
 		from: 0,
@@ -20,7 +20,7 @@ const initialState = {
 	isLoading: false
 };
 
-const recipeReducer: any = (state: RecipeState = initialState, action: Actions) => { //eslint-disable-line
+const recipeReducer = (state: RecipeState = initialState, action: Actions) => { //eslint-disable-line
 	switch (action.type) {
 	case "GET_RECIPES":
 		return {

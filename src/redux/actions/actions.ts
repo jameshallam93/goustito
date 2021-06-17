@@ -1,8 +1,8 @@
-import type { PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload, CLEAR_USER_RECIPES } from "./recipeActions";
+import type { PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload } from "./recipeActions";
 export type { PlainAction, ActionWithRecipesPayload, ActionWithSearchPayload };
 
-import { GET_RECIPES, SET_RECIPES, SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE, INIT_USER_RECIPES } from "./recipeActions";
-export { GET_RECIPES, SET_RECIPES, INIT_USER_RECIPES };
+import { GET_RECIPES, SET_RECIPES, SHOW_NEXT_PAGE, SHOW_PREVIOUS_PAGE, INIT_USER_RECIPES, CLEAR_USER_RECIPES } from "./recipeActions";
+export { GET_RECIPES, SET_RECIPES, INIT_USER_RECIPES, CLEAR_USER_RECIPES };
 
 //for testing
 export const NAVIGATION_ACTIONS = {

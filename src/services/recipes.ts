@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 
 import { generateApiRequest } from "./generateApiRequest";
-import { harvestRecipeData } from "../utils/harvestRecipeData/harvestRecipeData";
+import { harvesters } from "../utils/harvestRecipeData/harvestRecipeData";
 
 const baseUrl = "http://localhost:3001";
 
@@ -26,8 +26,7 @@ const recipeService = {
 	async searchByName(searchTerms: string, mealTypes: string[]): Promise<RecipeType[]> {
 		const request = generateApiRequest(searchTerms, mealTypes);
 		const response = await axios.get(request);
-
-		const filteredResponse = harvestRecipeData(response.data);
+		const filteredResponse = harvesters.harvestRecipeData(response.data);
 		return filteredResponse;
 	},
 
@@ -72,12 +71,7 @@ const recipeService = {
 				}
 			}
 		);
-
 		return response.data;
-
-
-
-
 	}
 };
 
