@@ -24,11 +24,11 @@ export const SAVE_USER_RECIPE = (recipe: RecipeType, currentUser: string): Actio
 		}
 	};
 };
-export const SAVE_RECIPE = (recipeId: string, currentUser: string): ActionWithSavedRecipeIdPayload => {
+export const SAVE_RECIPE = (recipe: RecipeType, currentUser: string): ActionWithSavedRecipePayload => {
 	return {
 		type: "SAVE_RECIPE",
 		payload: {
-			recipeId,
+			recipe,
 			currentUser
 		}
 	};

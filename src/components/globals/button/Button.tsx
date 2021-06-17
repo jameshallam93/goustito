@@ -13,7 +13,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({ label, onClick, hideOrSh
 	return (
 		<div>
 			<button
-				className={hideOrShow && hideOrShow()}
+				className={`button ${hideOrShow && hideOrShow()}`}
 				onClick={onClick}
 			>
 				{label}
@@ -21,6 +21,5 @@ const Button: React.FunctionComponent<ButtonProps> = ({ label, onClick, hideOrSh
 		</div >
 	);
 };
-
 
 export { Button };
