@@ -31,7 +31,7 @@ export function* saveRecipe(action: ActionWithSavedRecipePayload): Generator<
     );
     yield put({
         type: "SAVE_RECIPE",
-        payload: action.payload.recipe
+        payload: { recipe: action.payload.recipe }
     })
 }
 
