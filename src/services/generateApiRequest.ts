@@ -1,5 +1,5 @@
 const baseUrl = "https://api.edamam.com/search";
-const apiVariables = `&app_id=${process.env.REACT_APP_API_ID}&app_key=${process.env.REACT_APP_EDAMAM_API_KEY}&from=0&to=99`;
+
 
 const generateMealTypeString = (mealTypes: string[]): string => {
 
@@ -23,9 +23,12 @@ const generateSearchTermString = (searchTerms: string) => {
 };
 
 export const generateApiRequest = (searchTerms: string, mealTypes: string[]): string => {
+	const API_ID = process.env.REACT_APP_GOUSTITO_FRONTEND_API_ID;
+	const API_KEY = process.env.REACT_APP_GOUSTITO_FRONTEND_EDAMAM_API_KEY;
+	const apiVariables = `&app_id=${API_ID}&app_key=${API_KEY}&from=0&to=99`;
 	const searchTermsString = generateSearchTermString(searchTerms);
 	const mealTypeString = generateMealTypeString(mealTypes);
-
+	console.log(process.env.REACT_APP_GOUSTITO_FRONTEND_API_KEY);
 	let requestString = "";
 
 	requestString = `${baseUrl}?q=${searchTermsString}${apiVariables}`;
