@@ -1,4 +1,4 @@
-module.exports = {
+module.exports = { //eslint-disable-line
 	"env": {
 		"browser": true,
 		"es2021": true
@@ -21,6 +21,7 @@ module.exports = {
 		"@typescript-eslint"
 	],
 	"rules": {
+		"@typescript-eslint/no-var-requires": 0,
 		"react/prop-types": "off",
 		"indent": [
 			"error",
