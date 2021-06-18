@@ -24,8 +24,10 @@ export type UserValidation = {
 const recipeService = {
 
 	async searchByName(searchTerms: string, mealTypes: string[]): Promise<RecipeType[]> {
-		const request = generateApiRequest(searchTerms, mealTypes);
-		const response = await axios.get(request);
+		const apiRequest = generateApiRequest(searchTerms, mealTypes);
+		console.log(apiRequest);
+		const response = await axios.post(`${baseUrl}/api/recipe/search`, { apiRequest });
+		console.log(response);
 		const filteredResponse = harvesters.harvestRecipeData(response.data);
 		return filteredResponse;
 	},
