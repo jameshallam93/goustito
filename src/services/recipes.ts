@@ -1,6 +1,5 @@
 import axios, { AxiosResponse } from "axios";
 
-import { generateApiRequest } from "./generateApiRequest";
 import { harvesters } from "../utils/harvestRecipeData/harvestRecipeData";
 
 const baseUrl = "http://localhost:3001";
@@ -24,10 +23,7 @@ export type UserValidation = {
 const recipeService = {
 
 	async searchByName(searchTerms: string, mealTypes: string[]): Promise<RecipeType[]> {
-		const apiRequest = generateApiRequest(searchTerms, mealTypes);
-		console.log(apiRequest);
-		const response = await axios.post(`${baseUrl}/api/recipe/search`, { apiRequest });
-		console.log(response);
+		const response = await axios.post(`${baseUrl}/api/recipe/search`, { searchTerms, mealTypes });
 		const filteredResponse = harvesters.harvestRecipeData(response.data);
 		return filteredResponse;
 	},
