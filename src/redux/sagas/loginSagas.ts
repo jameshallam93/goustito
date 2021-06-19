@@ -36,8 +36,9 @@ export function* validateSession(action: any): Generator<any, void, void> {
     if (action.payload.sessionExpiry) {
         if (currentTime > action.payload.sessionExpiry) {
             {
-                localStorage.removeItem("token");
-                localStorage.removeItem("username");
+                window.localStorage.removeItem("token");
+                window.localStorage.removeItem("username");
+                window.localStorage.removeItem("token-expiry");
                 yield put({ type: "CLEAR_USER_DETAILS" })
                 window.alert("Session has expired - please login again");
                 return;
