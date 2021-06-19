@@ -30,6 +30,7 @@ I would like to include the following tech:
 * Nodejs
 * Bcrypt
 * MongoDB/mongoose
+* Docker/docker-compose
 
 ### 10/06
 
@@ -90,5 +91,15 @@ I intend to complete two more tickets today, globalising repeat components (butt
  I'm slowly moving more store logic into redux sagas, but still need to create a saga for logins and signups.
  
  
+ ### 19/06
  
+ Over the last few days, I have been focussed on a few different areas:
+ 
+ * Testing: I have created unit tests for all non-component modules and achieved decent coverage in these modules. Component modules will also need testing but has been delayed as most of the business logic from components has been extracted out into functions and sagas already.
+ * Dockerising: I have dockerised both the front and back end, and created a docker-compose.yml file. Next step is to create a dedicated repo for both front and back end to faciliate easy cloning and use of this app.
+ * The user vault is now operational, with all saved user recipes being initialised on sign in and rendered on this page.
+ * Session persistence is now in place, although I need to check why the token-expiry is not being removed from localstorage on session expiry.
+
+I have not yet had time to implement the social food feed feature, and will consider this once I have gotten the existing code into a maintainable and tested state.
+
  
