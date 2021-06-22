@@ -2,7 +2,6 @@ import "@testing-library/jest-dom/extend-expect";
 import { removeLocalStorageData } from "./removeLocalStorageData";
 
 
-
 describe("the removeLocalStorageData function", () => {
 
 	test("when items are set beforehand, they are removed by the removeLocalStorageData function", async () => {
