@@ -1,4 +1,4 @@
-import { RecipeType } from "../services/recipes";
+import { RecipeType } from "../../services/recipes";
 
 export type UserState = {
 	user: {

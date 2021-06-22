@@ -2,6 +2,7 @@ import { put, call } from "redux-saga/effects";
 import { loginService } from "../../services/login";
 import { recipeService } from "../../services/recipes";
 import { getCurrentTime } from "../../utils/getCurrentTime/getCurrentTime";
+import { removeLocalStorageData } from "../../utils/auth/removeLocalStorageData";
 /* eslint-disable */
 
 export function* attempt_Login(action: any): Generator<any, void, void> {
@@ -36,9 +37,7 @@ export function* validateSession(action: any): Generator<any, void, void> {
     if (action.payload.sessionExpiry) {
         if (currentTime > action.payload.sessionExpiry) {
             {
-                window.localStorage.removeItem("token");
-                window.localStorage.removeItem("username");
-                window.localStorage.removeItem("token-expiry");
+                removeLocalStorageData()
                 yield put({ type: "CLEAR_USER_DETAILS" })
                 window.alert("Session has expired - please login again");
                 return;
