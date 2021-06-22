@@ -1,6 +1,6 @@
-import { Actions } from "./actions/actions";
-import { RESULTS_PER_PAGE } from "../constants";
-import { RecipeType } from "../services/recipes";
+import { Actions } from "../actions/actions";
+import { RESULTS_PER_PAGE } from "../../constants";
+import { RecipeType } from "../../services/recipes";
 
 export type RecipeState = {
 	recipes: RecipeType[];

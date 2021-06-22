@@ -2,10 +2,8 @@ import "@testing-library/jest-dom/extend-expect";
 /*eslint-disable */
 
 import { recipeReducer, initialState } from "./recipeReducer";
-import { RESULTS_PER_PAGE } from "../constants";
-
-import { GET_RECIPES, SET_RECIPES, NAVIGATION_ACTIONS } from "./actions/actions";
-import { SHOW_PREVIOUS_PAGE } from "./actions/recipeActions";
+import { RESULTS_PER_PAGE } from "../../constants";
+import { GET_RECIPES, SET_RECIPES, NAVIGATION_ACTIONS } from "../actions/actions";
 
 const testSearchTerms = "search terms";
 const testMealType = ["lunch", "dinner"];

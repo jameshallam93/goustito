@@ -3,8 +3,8 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import createSagaMiddleware from "redux-saga";
 import { combineReducers } from "redux";
 
-import { recipeReducer, RecipeState } from "./recipeReducer";
-import { userReducer, UserState } from "./userReducer";
+import { recipeReducer, RecipeState } from "./reducers/recipeReducer";
+import { userReducer, UserState } from "./reducers/userReducer";
 import rootSaga from "./sagas/sagas";
 
 export type AppState = {

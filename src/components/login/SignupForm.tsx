@@ -27,7 +27,8 @@ const SignupForm: React.FunctionComponent<SignupFormProps> = ({ hidden }) => {
 			const response = await signUpService.createNewUser(credentials);
 			setNotification({ type: MessageType.message, message: `${response.data.username} signed up successfully!` });
 		} catch (e) {
-			setNotification({ type: MessageType.error, message: `${e.e.response.data.error}` });
+			console.log(e);
+			setNotification({ type: MessageType.error, message: `${e?.e?.response?.data.error}` });
 		}
 	};
 
