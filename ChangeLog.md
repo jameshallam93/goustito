@@ -103,3 +103,6 @@ I intend to complete two more tickets today, globalising repeat components (butt
 I have not yet had time to implement the social food feed feature, and will consider this once I have gotten the existing code into a maintainable and tested state.
 
  
+### 22/06
+
+Unfortunately my grandfather passed away this weekend, which has severely limited the time I had available to spend polishing and testing. As a result, this project is not in the state I had hoped it would be in by this stage. I intend to submit this at the end of play today to keep within the two week deadline, and will spend the afternoon refactoring and adding tests where I can.
