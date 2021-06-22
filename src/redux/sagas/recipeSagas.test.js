@@ -50,7 +50,7 @@ describe("the saveRecipe saga", () => {
 	}),
 		test("then puts a SAVE_RECIPE action with the payload.recipe as a parameter", () => {
 			expect(saveRecipeSaga.next(testRecipes[0]).value)
-				.toEqual(put({ type: "SAVE_RECIPE", payload: testRecipes[0] }))
+				.toEqual(put({ type: "SAVE_RECIPE", payload: { recipe: testRecipes[0] } }))
 		})
 	test("then should be done", () => {
 		expect(saveRecipeSaga.next().done).toBeTruthy();

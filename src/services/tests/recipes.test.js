@@ -38,11 +38,15 @@ describe("the fetchUserRecipes service", () => {
 
 describe("the searchByName service", () => {
 	beforeEach(() => {
-		axios.get.mockImplementation(() => data);
+		jest.mock("axios");
+		axios.post.mockImplementation(() =>
+			data
+		)
 	})
 
 	test("returns harvested data", async () => {
 		const response = await recipeService.searchByName("test", ["Breakfast", "lunch"]);
+		console.log(response);
 		expect(response).toEqual(harvestedData);
 	})
 	test("calls on harvestRecipeData", async () => {
